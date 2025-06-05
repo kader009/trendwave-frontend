@@ -1,3 +1,7 @@
+import Header from "@/pages/Header";
+
 export default function Home() {
-  return <div></div>;
+  return <div>
+    <Header/>
+  </div>;
 }
