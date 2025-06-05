@@ -39,9 +39,17 @@ const Navbar = () => {
 
   return (
     <div>
-      <AppBar position="static" className="bg-white" elevation={0}>
+      <AppBar
+        position="static"
+        className="bg-white"
+        elevation={0}
+        sx={{ backgroundColor: '#1E293B' }}
+      >
         <Container>
-          <Toolbar className="flex justify-between items-center" disableGutters={true}>
+          <Toolbar
+            className="flex justify-between items-center"
+            disableGutters={true}
+          >
             <Typography variant="h6" className="text-white font-bold">
               TrendWave
             </Typography>
