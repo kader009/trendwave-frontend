@@ -7,7 +7,7 @@ const AboutPage = () => {
     <Container>
     <div className="min-h-screen bg-white text-gray-800">
       {/* Hero Section */}
-      <section className=" py-16 px-4 sm:px-6 lg:px-8 text-center">
+      <section className=" py-10 px-4 sm:px-6 lg:px-8 text-center">
         <h1 className="text-4xl font-bold mb-4">About TrendWave</h1>
         <p className="max-w-2xl mx-auto text-gray-600 text-lg">
           Empowering vendors, delighting customers TrendWave is your ultimate multivendor marketplace.
