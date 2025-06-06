@@ -3,7 +3,7 @@ import Image from 'next/image';
 const brands = [
   {
     name: 'Nike',
-    logo: 'https://cdn.dribbble.com/userupload/4606170/file/still-fc891139220c3d9edd42f650fe08a62c.png?resize=400x0',
+    logo: 'https://logos-world.net/wp-content/uploads/2020/04/Nike-Logo.png',
   },
   {
     name: 'Adidas',
