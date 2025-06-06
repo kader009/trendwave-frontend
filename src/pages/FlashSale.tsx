@@ -42,16 +42,20 @@ const FlashSale = async () => {
                   className="bg-white rounded-lg shadow-sm p-3 flex flex-col justify-between"
                 >
                   {/* Image with Discount */}
-                  <div className="relative">
+                  <div className="relative group">
                     <div className="h-56 w-full rounded-md overflow-hidden bg-gray-100 relative">
                       <Image
                         src={product.image}
                         alt={product.name}
                         fill
-                        className="object-cover"
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
                         sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 25vw"
                       />
+                      {/* Overlay on Hover */}
+                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
+
+                    {/* Discount Badge */}
                     <span className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-[2px] rounded">
                       -{product.discount ?? 10}%
                     </span>
