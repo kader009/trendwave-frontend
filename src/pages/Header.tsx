@@ -2,10 +2,11 @@
 
 import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper/types';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { Autoplay, Pagination} from 'swiper/modules';
+import { Autoplay, Pagination } from 'swiper/modules';
 import Image from 'next/image';
 
 // Slide data type
@@ -42,7 +43,7 @@ export default function Header() {
   const progressContent = useRef<HTMLSpanElement>(null);
 
   const onAutoplayTimeLeft = (
-    _swiper: any,
+    _swiper: SwiperType,
     time: number,
     progress: number
   ) => {
@@ -89,7 +90,10 @@ export default function Header() {
         ))}
 
         {/* Optional Autoplay Progress */}
-        <div className="autoplay-progress absolute right-4 bottom-4 z-10 text-white" slot="container-end">
+        <div
+          className="autoplay-progress absolute right-4 bottom-4 z-10 text-white"
+          slot="container-end"
+        >
           <svg viewBox="0 0 48 48" ref={progressCircle} className="w-8 h-8">
             <circle
               cx="24"
