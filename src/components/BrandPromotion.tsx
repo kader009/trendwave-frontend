@@ -29,7 +29,7 @@ const brands = [
 
 const BrandMarquee = () => {
   return (
-    <div className="overflow-hidden w-full bg-white py-4">
+    <div className="overflow-hidden w-full bg-white py-4 mt-10">
       <div className="flex gap-12 animate-marquee whitespace-nowrap">
         {brands.map((brand, index) => (
           <div key={index} className="flex items-center gap-2 min-w-[150px]">

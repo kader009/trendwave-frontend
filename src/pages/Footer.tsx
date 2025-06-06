@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1E293B] text-white pt-16 pb-8 mt-20">
+    <footer className="bg-[#1E293B] text-white pt-16 pb-8 mt-10">
       <Container>
       <div className="max-w-[86rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Logo & About */}
@@ -28,6 +28,7 @@ const Footer = () => {
               type="email"
               placeholder="Your email"
               className="bg-white rounded px-3 py-2 text-black w-full text-sm"
+              required
             />
             <button
               type="submit"
