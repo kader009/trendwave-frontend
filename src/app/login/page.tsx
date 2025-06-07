@@ -104,7 +104,7 @@ export default function RegisterPage() {
                 href="/register"
                 className="text-blue-600 hover:underline font-medium"
               >
-                Login
+                Register
               </Link>
             </p>
           </form>

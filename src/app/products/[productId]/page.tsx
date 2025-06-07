@@ -90,9 +90,9 @@ const ProductDetails = () => {
             </span>
           </div>
 
-          <div className="text-3xl font-semibold text-green-600">${product.price}</div>
+          <div className="text-3xl font-semibold">${product.price}</div>
 
-          <button className="mt-6 px-8 py-3 bg-gradient-to-r from-black to-gray-800 text-white font-semibold rounded-sm shadow-sm hover:scale-105 transition">
+          <button className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-sm shadow-sm hover:scale-105 transition">
             Buy Now
           </button>
         </div>

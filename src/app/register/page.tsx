@@ -10,6 +10,7 @@ type FormData = {
   email: string;
   password: string;
   image: string;
+  role: string;
 };
 
 export default function RegisterPage() {
@@ -25,20 +26,9 @@ export default function RegisterPage() {
 
   return (
     <Container>
-      <div className="h-screen flex flex-col md:flex-row">
-        {/* Left Side Image */}
-        <div className="w-full md:w-full h-64 sm:h-80 md:h-auto">
-          <Image
-            src="/register.svg"
-            width={400}
-            height={500}
-            alt="Register Illustration"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
+      <div className="min-h-screen flex flex-col-reverse md:flex-row items-center justify-center gap-6 p-4 sm:p-6 md:p-10">
         {/* Right Side Form */}
-        <div className="w-full md:w-1/2 flex items-center justify-center p-4 sm:p-6 md:p-8">
+        <div className="w-full md:w-1/2 flex items-center justify-center">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="w-full max-w-xs sm:max-w-sm md:max-w-md space-y-4"
@@ -86,7 +76,10 @@ export default function RegisterPage() {
                 type="password"
                 {...register('password', {
                   required: 'Password is required',
-                  minLength: { value: 6, message: 'Password must be at least 6 characters' },
+                  minLength: {
+                    value: 6,
+                    message: 'Password must be at least 6 characters',
+                  },
                 })}
                 className="w-full px-4 py-2 border rounded"
                 placeholder="********"
@@ -110,6 +103,23 @@ export default function RegisterPage() {
               )}
             </div>
 
+            {/* Role Selector */}
+            <div>
+              <label className="block mb-1 font-medium">Select Role</label>
+              <select
+                {...register('role', { required: 'Role is required' })}
+                className="w-full px-4 py-2 border rounded"
+              >
+                <option value="">Select a role</option>
+                <option value="customer">Customer</option>
+                <option value="seller">Seller</option>
+                <option value="admin">Admin</option>
+              </select>
+              {errors.role && (
+                <p className="text-red-500 text-sm mt-1">{errors.role.message}</p>
+              )}
+            </div>
+
             {/* Submit Button */}
             <button
               type="submit"
@@ -126,6 +136,17 @@ export default function RegisterPage() {
               </Link>
             </p>
           </form>
+        </div>
+
+        {/* Left Side Image */}
+        <div className="w-full md:w-1/2">
+          <Image
+            src="/register.svg"
+            width={500}
+            height={500}
+            alt="Register Illustration"
+            className="w-full h-auto object-contain"
+          />
         </div>
       </div>
     </Container>
