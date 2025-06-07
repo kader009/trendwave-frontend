@@ -3,16 +3,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface Register {
   name: string;
   email: string;
-  photoUrl: string;
   password: string;
+  image: string;
   role: string;
 }
 
 const initialState: Register = {
   name: '',
   email: '',
-  photoUrl: '',
   password: '',
+  image: '',
   role: '',
 };
 
@@ -29,7 +29,7 @@ const registerSlice = createSlice({
     },
 
     SetPhotoUrl: (state, action: PayloadAction<string>) => {
-      state.photoUrl = action.payload;
+      state.image = action.payload;
     },
 
     SetPassword: (state, action: PayloadAction<string>) => {

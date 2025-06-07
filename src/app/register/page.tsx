@@ -5,7 +5,14 @@ import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
-import { SetEmail, SetName, SetPassword, SetPhotoUrl, SetRole } from '@/redux/features/authentication/registerSlice';
+import {
+  SetEmail,
+  SetName,
+  SetPassword,
+  SetPhotoUrl,
+  SetRole,
+} from '@/redux/features/authentication/registerSlice';
+import { useSignUpMutation } from '@/redux/api/endApi';
 
 type FormData = {
   name: string;
@@ -16,16 +23,31 @@ type FormData = {
 };
 
 export default function RegisterPage() {
-  const dispatch = useAppDispatch()
-  const {name, email, password, photoUrl, role} = useAppSelector((state:RootState) => state.register)
+  const dispatch = useAppDispatch();
+  const { name, email, password, image, role } = useAppSelector(
+    (state: RootState) => state.register
+  );
+  const [signUp] = useSignUpMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log('Form Data:', data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      const { name, email, password, image, role } = data;
+      const user = await signUp({ name, email, password, image, role });
+      console.log('user data', user);
+
+      dispatch(SetName(''));
+      dispatch(SetEmail(''));
+      dispatch(SetPhotoUrl(''));
+      dispatch(SetPassword(''));
+      dispatch(SetRole(''));
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -51,7 +73,9 @@ export default function RegisterPage() {
                 onChange={(e) => dispatch(SetName(e.target.value))}
               />
               {errors.name && (
-                <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.name.message}
+                </p>
               )}
             </div>
 
@@ -73,7 +97,9 @@ export default function RegisterPage() {
                 onChange={(e) => dispatch(SetEmail(e.target.value))}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
               )}
             </div>
 
@@ -95,7 +121,9 @@ export default function RegisterPage() {
                 onChange={(e) => dispatch(SetPassword(e.target.value))}
               />
               {errors.password && (
-                <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.password.message}
+                </p>
               )}
             </div>
 
@@ -107,11 +135,13 @@ export default function RegisterPage() {
                 {...register('image', { required: 'Image URL is required' })}
                 className="w-full px-4 py-2 border rounded"
                 placeholder="https://example.com/image.jpg"
-                value={photoUrl}
+                value={image}
                 onChange={(e) => dispatch(SetPhotoUrl(e.target.value))}
               />
               {errors.image && (
-                <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.image.message}
+                </p>
               )}
             </div>
 
@@ -130,7 +160,9 @@ export default function RegisterPage() {
                 <option value="admin">Admin</option>
               </select>
               {errors.role && (
-                <p className="text-red-500 text-sm mt-1">{errors.role.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.role.message}
+                </p>
               )}
             </div>
 
@@ -145,7 +177,10 @@ export default function RegisterPage() {
             {/* Login Link */}
             <p className="text-center text-sm">
               Already have an account?{' '}
-              <Link href="/login" className="text-blue-600 hover:underline font-medium">
+              <Link
+                href="/login"
+                className="text-blue-600 hover:underline font-medium"
+              >
                 Login
               </Link>
             </p>
