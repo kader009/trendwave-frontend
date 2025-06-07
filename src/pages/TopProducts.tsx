@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 interface Product {
+  _id: string;
   name: string;
   description: string;
   category: string;
@@ -82,17 +83,11 @@ const TopProducts = async () => {
 
                   {/* Add Button */}
                   <div className="flex justify-end mt-2">
-                    <button className="p-1 hover:text-black transition">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        height="20"
-                        width="20"
-                        viewBox="0 0 24 24"
-                        fill="currentColor"
-                      >
-                        <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" />
-                      </svg>
-                    </button>
+                    <Link href={`/products/${product._id}`}>
+                      <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
+                        Detail <span className="ml-1">&rarr;</span>
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>

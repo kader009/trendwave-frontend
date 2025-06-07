@@ -24,7 +24,9 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/v1/products/${productId}`);
+        const res = await fetch(
+          `http://localhost:5000/api/v1/products/${productId}`
+        );
         if (!res.ok) throw new Error('Failed to fetch product');
         const json = await res.json();
         setProduct(json?.Productdata);
@@ -50,9 +52,7 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="text-center text-red-500 mt-10">
-        Product not found.
-      </div>
+      <div className="text-center text-red-500 mt-10">Product not found.</div>
     );
   }
 
@@ -92,7 +92,7 @@ const ProductDetails = () => {
 
           <div className="text-3xl font-semibold">${product.price}</div>
 
-          <button className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-sm shadow-sm hover:scale-105 transition">
+          <button className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition">
             Buy Now
           </button>
         </div>

@@ -4,6 +4,7 @@ import './globals.css';
 import Providers from '@/Provider/ReduxProvider';
 import Navbar from '@/shared/Navbar';
 import Footer from '@/shared/Footer';
+import PersistProvider from '@/Provider/PersistProvider';
 
 const poppins = Poppins({
   variable: '--font-poppins',
@@ -28,9 +29,11 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${poppins.variable} font-sans antialiased`}>
         <Providers>
+          <PersistProvider>
           <Navbar/>
           {children}
           <Footer/>
+          </PersistProvider>
           </Providers>
       </body>
     </html>

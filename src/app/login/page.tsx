@@ -10,6 +10,11 @@ import {
   SetEmail,
   SetPassword,
 } from '@/redux/features/authentication/loginSlice';
+import { useLoginMutation } from '@/redux/api/endApi';
+import { toast } from 'sonner';
+import { setUser } from '@/redux/features/authentication/userSlice';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 type FormData = {
   email: string;
@@ -19,15 +24,45 @@ type FormData = {
 export default function LoginPage() {
   const dispatch = useAppDispatch();
   const { email, password } = useAppSelector((state: RootState) => state.login);
+  const error = useAppSelector((state: RootState) => state.user.error);
+  const [login] = useLoginMutation();
+  const router = useRouter();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<FormData>();
 
-  const onSubmit = (data: FormData) => {
-    console.log('Form Data:', data);
+  const onSubmit = async (data: FormData) => {
+    try {
+      const { email, password } = data;
+      const userData = await login({ email, password });
+
+      if (userData?.data?.user && userData?.data?.token) {
+        dispatch(setUser(userData.data));
+        toast.success('Welcome to TrendWave');
+
+        dispatch(SetEmail(''));
+        dispatch(SetPassword(''));
+        router.replace('/');
+      } else {
+        throw new Error('Invalid login response write again');
+      }
+    } catch (error) {
+      console.error(error);
+      const message =
+        (error as { message?: string; error?: string })?.message ||
+        (error as { message?: string; error?: string })?.error ||
+        'Invalid email or password';
+      toast.error(message);
+    }
   };
+
+  useEffect(() => {
+    if (error) {
+      toast.error(error);
+    }
+  }, [error]);
 
   return (
     <Container>
