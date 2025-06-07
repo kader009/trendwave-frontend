@@ -20,12 +20,18 @@ const FlashSalePage = async () => {
   const flashData = await response.json();
 
   return (
-    <div className="mt-20">
+    <div className="mt-12">
       <Container>
         <div className="px-4 md:px-6 py-4">
-          {/* Title & View All Button */}
-          <div className="flex items-center justify-between mb-6">
-            <h1 className="text-xl md:text-2xl font-bold">Flash Sale</h1>
+          {/* Title */}
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h1 className="text-xl md:text-2xl font-bold">Flash Sale Products</h1>
+              <p className="text-sm text-gray-600 mb-4">
+                Grab your favorite products at unbeatable prices! Limited time
+                offers, hurry up!
+              </p>
+            </div>
           </div>
 
           {/* Product Grid */}
