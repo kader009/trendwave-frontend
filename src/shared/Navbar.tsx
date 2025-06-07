@@ -15,10 +15,11 @@ import Container from '@/components/ui/Container';
 
 const navItems = [
   { label: 'Home', path: '/' },
+  { label: 'Dashboard', path: '/dashboard' },
   { label: 'Products', path: '/products' },
   { label: 'Flash sale', path: '/flash-sale' },
   { label: 'About us', path: '/about-us' },
-  { label: 'Contact', path: '/contact' },
+  { label: 'Login', path: '/login' },
 ];
 
 const MenuIcon = ({ className }: { className?: string }) => (

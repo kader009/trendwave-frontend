@@ -56,7 +56,7 @@ const FlashSalePage = async () => {
                   </div>
 
                   {/* Discount Badge */}
-                  <span className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-[2px] rounded">
+                  <span className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-[2px] rounded">
                     -{product.discount ?? 10}%
                   </span>
                 </div>

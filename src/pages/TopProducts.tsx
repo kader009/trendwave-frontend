@@ -32,7 +32,7 @@ const TopProducts = async () => {
             </div>
 
             <Link href="/products">
-              <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition">
+              <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
                 View All <span className="ml-1">&rarr;</span>
               </button>
             </Link>
