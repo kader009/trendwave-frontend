@@ -4,15 +4,21 @@ import Container from '@/components/ui/Container';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { RootState } from '@/redux/store';
+import {
+  SetEmail,
+  SetPassword,
+} from '@/redux/features/authentication/loginSlice';
 
 type FormData = {
-  name: string;
   email: string;
   password: string;
-  image: string;
 };
 
 export default function LoginPage() {
+  const dispatch = useAppDispatch();
+  const { email, password } = useAppSelector((state: RootState) => state.login);
   const {
     register,
     handleSubmit,
@@ -60,9 +66,13 @@ export default function LoginPage() {
                 })}
                 className="w-full px-4 py-2 border rounded"
                 placeholder="you@example.com"
+                value={email}
+                onChange={(e) => dispatch(SetEmail(e.target.value))}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.email.message}
+                </p>
               )}
             </div>
 
@@ -80,9 +90,13 @@ export default function LoginPage() {
                 })}
                 className="w-full px-4 py-2 border rounded"
                 placeholder="********"
+                value={password}
+                onChange={(e) => dispatch(SetPassword(e.target.value))}
               />
               {errors.password && (
-                <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
+                <p className="text-red-500 text-sm mt-1">
+                  {errors.password.message}
+                </p>
               )}
             </div>
 
