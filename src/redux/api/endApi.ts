@@ -4,7 +4,7 @@ const TrenwaveApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     signUp: build.mutation({
       query: (userInfo) => ({
-        url: '/api/v1/user',
+        url: '/api/v1/create-user',
         method: 'POST',
         body: userInfo,
       }),

@@ -1,9 +1,11 @@
 'use client';
-
 import Container from '@/components/ui/Container';
 import Image from 'next/image';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { RootState } from '@/redux/store';
+import { SetEmail, SetName, SetPassword, SetPhotoUrl, SetRole } from '@/redux/features/authentication/registerSlice';
 
 type FormData = {
   name: string;
@@ -14,6 +16,8 @@ type FormData = {
 };
 
 export default function RegisterPage() {
+  const dispatch = useAppDispatch()
+  const {name, email, password, photoUrl, role} = useAppSelector((state:RootState) => state.register)
   const {
     register,
     handleSubmit,
@@ -43,6 +47,8 @@ export default function RegisterPage() {
                 {...register('name', { required: 'Name is required' })}
                 className="w-full px-4 py-2 border rounded"
                 placeholder="Your Name"
+                value={name}
+                onChange={(e) => dispatch(SetName(e.target.value))}
               />
               {errors.name && (
                 <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
@@ -63,6 +69,8 @@ export default function RegisterPage() {
                 })}
                 className="w-full px-4 py-2 border rounded"
                 placeholder="you@example.com"
+                value={email}
+                onChange={(e) => dispatch(SetEmail(e.target.value))}
               />
               {errors.email && (
                 <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
@@ -83,6 +91,8 @@ export default function RegisterPage() {
                 })}
                 className="w-full px-4 py-2 border rounded"
                 placeholder="********"
+                value={password}
+                onChange={(e) => dispatch(SetPassword(e.target.value))}
               />
               {errors.password && (
                 <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
@@ -97,6 +107,8 @@ export default function RegisterPage() {
                 {...register('image', { required: 'Image URL is required' })}
                 className="w-full px-4 py-2 border rounded"
                 placeholder="https://example.com/image.jpg"
+                value={photoUrl}
+                onChange={(e) => dispatch(SetPhotoUrl(e.target.value))}
               />
               {errors.image && (
                 <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>
@@ -109,6 +121,8 @@ export default function RegisterPage() {
               <select
                 {...register('role', { required: 'Role is required' })}
                 className="w-full px-4 py-2 border rounded"
+                value={role}
+                onChange={(e) => dispatch(SetRole(e.target.value))}
               >
                 <option value="">Select a role</option>
                 <option value="customer">Customer</option>
@@ -123,7 +137,7 @@ export default function RegisterPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+              className="w-full bg-black text-white py-2 rounded hover:bg-gray-700 transition"
             >
               Register
             </button>

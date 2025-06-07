@@ -12,7 +12,7 @@ type FormData = {
   image: string;
 };
 
-export default function RegisterPage() {
+export default function LoginPage() {
   const {
     register,
     handleSubmit,
@@ -27,21 +27,22 @@ export default function RegisterPage() {
     <Container>
       <div className="min-h-screen flex flex-col md:flex-row">
         {/* Left Side Image */}
-        <div className="md:w-1/2 w-full h-64 md:h-auto">
+        <div className="w-full md:w-1/2 h-64 md:h-auto">
           <Image
             src="/login.svg"
             width={500}
             height={500}
             alt="login Illustration"
             className="w-full h-full object-cover"
+            priority
           />
         </div>
 
         {/* Right Side Form */}
-        <div className="md:w-1/2 w-full flex items-center justify-center p-8">
+        <div className="w-full md:w-1/2 flex items-center justify-center p-6 sm:p-8">
           <form
             onSubmit={handleSubmit(onSubmit)}
-            className="w-full max-w-md space-y-4"
+            className="w-full max-w-xs sm:max-w-sm md:max-w-md space-y-5"
           >
             <h1 className="text-3xl font-bold text-center">Login</h1>
 
@@ -61,9 +62,7 @@ export default function RegisterPage() {
                 placeholder="you@example.com"
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.email.message}
-                </p>
+                <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
               )}
             </div>
 
@@ -83,16 +82,14 @@ export default function RegisterPage() {
                 placeholder="********"
               />
               {errors.password && (
-                <p className="text-red-500 text-sm mt-1">
-                  {errors.password.message}
-                </p>
+                <p className="text-red-500 text-sm mt-1">{errors.password.message}</p>
               )}
             </div>
 
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition"
+              className="w-full bg-black text-white py-2 rounded hover:bg-gray-700 transition"
             >
               Login
             </button>
