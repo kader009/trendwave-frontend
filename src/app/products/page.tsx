@@ -113,7 +113,7 @@ const ProductListing = () => {
           <input
             type="range"
             min="0"
-            max="120"
+            max="100"
             value={priceRange[1]}
             onChange={(e) => setPriceRange([0, +e.target.value])}
             className="w-full"

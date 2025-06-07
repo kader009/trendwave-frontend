@@ -15,10 +15,10 @@ import Container from '@/components/ui/Container';
 
 const navItems = [
   { label: 'Home', path: '/' },
+  { label: 'About us', path: '/about-us' },
   { label: 'Dashboard', path: '/dashboard' },
   { label: 'Products', path: '/products' },
   { label: 'Flash sale', path: '/flash-sale' },
-  { label: 'About us', path: '/about-us' },
   { label: 'Login', path: '/login' },
 ];
 
