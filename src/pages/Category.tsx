@@ -1,5 +1,6 @@
 import Container from '@/components/ui/Container';
 import Image from 'next/image';
+import Link from 'next/link';
 
 interface Category {
   name: string;
@@ -93,9 +94,11 @@ const Category = async () => {
 
         {/* View All Button */}
         <div className="mt-10 text-center">
-          <button className="inline-flex items-center gap-2 px-6 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
-            View All <span className="text-xl">&rarr;</span>
-          </button>
+          <Link href={'/products'}>
+            <button className="inline-flex items-center gap-2 px-4 py-2 bg-black text-white rounded-full hover:bg-gray-800 transition">
+              View All <span className="text-xl">&rarr;</span>
+            </button>
+          </Link>
         </div>
       </Container>
     </div>

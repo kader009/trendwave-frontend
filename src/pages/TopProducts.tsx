@@ -31,9 +31,9 @@ const TopProducts = async () => {
               </h1>
             </div>
 
-            <Link href="/flash-sale">
+            <Link href="/products">
               <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition">
-                View All <span className="ml-1">➤</span>
+                View All <span className="ml-1">&rarr;</span>
               </button>
             </Link>
           </div>
@@ -60,7 +60,7 @@ const TopProducts = async () => {
                   </div>
 
                   {/* Discount Badge */}
-                  <span className="absolute top-2 left-2 bg-red-600 text-white text-xs px-2 py-[2px] rounded">
+                  <span className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-[2px] rounded">
                     -{product.discount ?? 10}%
                   </span>
                 </div>
