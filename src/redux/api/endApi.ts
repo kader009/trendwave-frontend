@@ -1,6 +1,6 @@
 import { baseApi } from "./baseApi";
 
-const EduNestApi = baseApi.injectEndpoints({
+const TrenwaveApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
     signUp: build.mutation({
       query: (userInfo) => ({
@@ -222,4 +222,4 @@ export const {
   useUpdateSessionMutation,
   useBookPostMutation,
   useGetbookByemailQuery
-} = EduNestApi;
+} = TrenwaveApi;

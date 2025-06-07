@@ -169,7 +169,7 @@ const ProductListing = () => {
                 </span>
               </div>
               <Link
-                href={`/product/${product._id}`}
+                href={`/products/${product._id}`}
                 className="mt-4 inline-block w-full text-center bg-black text-white py-2 rounded-md hover:bg-gray-600"
               >
                 View Details
