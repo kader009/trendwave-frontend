@@ -88,17 +88,17 @@ const TrenwaveApi = baseApi.injectEndpoints({
     }),
 
     // all session data for admin role
-    allSession: build.query({
+    allProducts: build.query({
       query: () => ({
-        url: '/api/v1/session',
+        url: '/api/v1/products',
         method: 'GET',
       }),
     }),
 
     // delete session from the admin
-    deleteSession: build.mutation({
+    deleteProduct: build.mutation({
       query: (id) => ({
-        url: `/api/v1/session/${id}`,
+        url: `/api/v1/products/${id}`,
         method: 'DELETE',
       }),
     }),
@@ -208,8 +208,8 @@ export const {
   useDeleteNoteMutation,
   useUpdateNoteMutation,
   useUpdateUserMutation,
-  useAllSessionQuery,
-  useDeleteSessionMutation,
+  useAllProductsQuery,
+  useDeleteProductMutation,
   useApproveSessionMutation,
   usePostSessionMutation,
   useTutorSessionQuery,

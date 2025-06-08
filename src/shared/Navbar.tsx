@@ -8,6 +8,7 @@ import { RootState } from '@/redux/store';
 import { logout } from '@/redux/features/authentication/userSlice';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import Image from 'next/image'; // 👈 Import Image component
 
 const MenuIcon = ({ className }: { className?: string }) => (
   <svg
@@ -39,7 +40,7 @@ const Navbar = () => {
   const handleLogout = () => {
     dispatch(logout());
     router.replace('/login');
-    toast.success('logout successfully');
+    toast.success('Logout successfully');
   };
 
   return (
@@ -85,12 +86,23 @@ const Navbar = () => {
                   >
                     Dashboard
                   </Link>
+
                   <button
                     onClick={handleLogout}
                     className="hover:text-slate-300 transition-colors"
                   >
                     Logout
                   </button>
+
+                  <div className="w-8 h-8 rounded-full overflow-hidden">
+                    <Image
+                      src={`https://i.pravatar.cc/40?u=${user.email}`}
+                      alt="User"
+                      width={40}
+                      height={40}
+                      className="rounded-full object-cover"
+                    />
+                  </div>
                 </>
               ) : (
                 <Link
@@ -163,15 +175,26 @@ const Navbar = () => {
               >
                 Dashboard
               </Link>
+
               <button
                 onClick={() => {
                   handleLogout();
                   handleDrawerToggle();
                 }}
-                className="text-red-600 hover:bg-slate-100 px-4 py-2 rounded text-left cursor-pointer"
+                className="text-slate-800 hover:bg-slate-100 px-4 py-2 rounded text-left cursor-pointer"
               >
                 Logout
               </button>
+
+              <div className="px-4 py-2">
+                <Image
+                  src={`https://i.pravatar.cc/40?u=${user.email}`}
+                  alt="User"
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
+                />
+              </div>
             </>
           ) : (
             <Link

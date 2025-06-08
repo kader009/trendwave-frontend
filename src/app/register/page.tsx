@@ -13,6 +13,8 @@ import {
   SetRole,
 } from '@/redux/features/authentication/registerSlice';
 import { useSignUpMutation } from '@/redux/api/endApi';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 type FormData = {
   name: string;
@@ -24,6 +26,7 @@ type FormData = {
 
 export default function RegisterPage() {
   const dispatch = useAppDispatch();
+  const router = useRouter();
   const { name, email, password, image, role } = useAppSelector(
     (state: RootState) => state.register
   );
@@ -40,6 +43,9 @@ export default function RegisterPage() {
       const user = await signUp({ name, email, password, image, role });
       console.log('user data', user);
 
+      toast.success('registration successfull');
+      router.replace('/login');
+
       dispatch(SetName(''));
       dispatch(SetEmail(''));
       dispatch(SetPhotoUrl(''));
@@ -47,6 +53,7 @@ export default function RegisterPage() {
       dispatch(SetRole(''));
     } catch (error) {
       console.log(error);
+      toast.error('something went wrong!')
     }
   };
 
