@@ -30,8 +30,8 @@ const links = [
     roles: ['admin'],
   },
   {
-    href: '/dashboard/admin/all-category',
-    label: 'All Category',
+    href: '/dashboard/admin/all-product',
+    label: 'All Product',
     roles: ['admin'],
   },
   {
