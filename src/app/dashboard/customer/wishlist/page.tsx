@@ -1,11 +1,15 @@
 'use client';
 
-import { useGetWishlistByemailQuery } from '@/redux/api/endApi';
+import Image from 'next/image';
+import {
+  useGetWishlistByemailQuery,
+  useDeleteWishlistMutation,
+} from '@/redux/api/endApi';
 import { useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
-import Image from 'next/image';
+import { toast } from 'sonner';
 
-interface WIshlist {
+interface Wishlist {
   _id: string;
   productId: string;
   productName: string;
@@ -17,14 +21,35 @@ interface WIshlist {
 
 const WishList = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
-  const { data, isLoading, error } = useGetWishlistByemailQuery(user?.email);
+  const { data, isLoading, error, refetch } = useGetWishlistByemailQuery(
+    user?.email
+  );
+  const [deleteWishlist] = useDeleteWishlistMutation();
+
+  const handleRemove = async (id: string) => {
+    try {
+      await deleteWishlist(id);
+      toast.success('Wishlist item removed');
+      refetch();
+    } catch (err) {
+      toast.error('Failed to remove wishlist item');
+      console.error(err);
+    }
+  };
 
   if (isLoading)
     return <p className="text-center mt-10">Loading Wishlist...</p>;
+
   if (error)
     return (
-      <p className="text-center mt-10 text-red-500">Failed to load orders.</p>
+      <p className="text-center mt-10 text-red-500">Failed to load wishlist.</p>
     );
+
+  if (!data || data.length === 0) {
+    return (
+      <p className="text-center mt-10 text-gray-500">Your wishlist is empty.</p>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -33,7 +58,7 @@ const WishList = () => {
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {data?.map((wishlist: WIshlist) => (
+        {data.map((wishlist: Wishlist) => (
           <div
             key={wishlist._id}
             className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300"
@@ -59,9 +84,17 @@ const WishList = () => {
                 Price: <span className="text-blue-600">${wishlist.price}</span>
               </p>
 
-              <button className="mt-4 w-full bg-black text-white py-2 rounded-md hover:bg-gray-700 transition">
-                Buy Now
-              </button>
+              <div className="flex gap-3">
+                <button className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-700 transition">
+                  Buy Now
+                </button>
+                <button
+                  onClick={() => handleRemove(wishlist._id)}
+                  className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
+                >
+                  Remove
+                </button>
+              </div>
             </div>
           </div>
         ))}

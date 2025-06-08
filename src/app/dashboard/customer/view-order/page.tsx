@@ -1,9 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { useGetorderByemailQuery } from '@/redux/api/endApi';
+import { useGetorderByemailQuery, useDeleteOrderMutation } from '@/redux/api/endApi';
 import { useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
+import { toast } from 'sonner';
 
 interface Orders {
   _id: string;
@@ -17,13 +18,34 @@ interface Orders {
 
 const ViewOrder = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
-  const { data, isLoading, error } = useGetorderByemailQuery(user?.email);
+  const { data, isLoading, error, refetch } = useGetorderByemailQuery(user?.email);
+  const [deleteOrder] = useDeleteOrderMutation();
+
+  const handleRemove = async (id: string) => {
+    try {
+      await deleteOrder(id);
+      toast.success('Order removed successfully');
+      refetch(); // refresh the list
+    } catch (err) {
+      toast.error('Failed to remove order');
+      console.error(err);
+    }
+  };
 
   if (isLoading) return <p className="text-center mt-10">Loading orders...</p>;
+
   if (error)
     return (
       <p className="text-center mt-10 text-red-500">Failed to load orders.</p>
     );
+
+  if (!data || data.length === 0) {
+    return (
+      <p className="text-center mt-10 text-gray-500">
+        You have no orders yet.
+      </p>
+    );
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-10">
@@ -32,7 +54,7 @@ const ViewOrder = () => {
       </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-        {data?.map((order: Orders) => (
+        {data.map((order: Orders) => (
           <div
             key={order._id}
             className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300"
@@ -58,9 +80,17 @@ const ViewOrder = () => {
                 Price: <span className="text-blue-600">${order.price}</span>
               </p>
 
-              <button className="mt-4 w-full bg-black text-white py-2 rounded-md hover:bg-gray-700 transition">
-                Pay Now
-              </button>
+              <div className="flex gap-3">
+                <button className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-700 transition">
+                  Pay Now
+                </button>
+                <button
+                  className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
+                  onClick={() => handleRemove(order._id)}
+                >
+                  Remove
+                </button>
+              </div>
             </div>
           </div>
         ))}

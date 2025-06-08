@@ -15,6 +15,7 @@ interface Orders {
   price: number;
   image: string;
   customerEmail: string;
+  paymentStatus:string
 }
 
 const OrderTable = () => {
@@ -36,6 +37,7 @@ const OrderTable = () => {
             <th className="px-4 py-3 text-left">Rating</th>
             <th className="px-4 py-3 text-left">Price</th>
             <th className="px-4 py-3 text-left">Customer Email</th>
+            <th className="px-4 py-3 text-left">status</th>
             <th className="px-4 py-3 text-left">Action</th>
           </tr>
         </thead>
@@ -66,6 +68,9 @@ const OrderTable = () => {
               </td>
               <td className="px-4 py-2 text-slate-600">
                 {order.customerEmail}
+              </td>
+              <td className="px-4 py-2 text-slate-600">
+                {order.paymentStatus}
               </td>
               <td className="px-4 py-2 space-x-2">
                 <button className="text-red-600 hover:underline text-sm">

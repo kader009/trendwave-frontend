@@ -76,6 +76,8 @@ const ProductDetails = () => {
         price: product?.price,
         image: product?.image,
         customerEmail: user?.email,
+        paymentStatus: 'unpaid',
+        orderDate: new Date().toISOString(),
       };
       const postData = await bookorder(payload);
       console.log(postData);

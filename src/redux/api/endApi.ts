@@ -1,4 +1,4 @@
-import { baseApi } from "./baseApi";
+import { baseApi } from './baseApi';
 
 const TrenwaveApi = baseApi.injectEndpoints({
   endpoints: (build) => ({
@@ -49,14 +49,6 @@ const TrenwaveApi = baseApi.injectEndpoints({
       query: (email) => ({
         url: `/api/v1/note/${email}`,
         method: 'GET',
-      }),
-    }),
-
-    // delete note based on id
-    deleteNote: build.mutation({
-      query: (id) => ({
-        url: `/api/v1/note/${id}`,
-        method: 'DELETE',
       }),
     }),
 
@@ -153,10 +145,10 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // materail delete from tutor
-    deleteMaterial: build.mutation({
+    // wishlist delete from tutor
+    deleteWishlist: build.mutation({
       query: (id) => ({
-        url: `/api/v1/material/${id}`,
+        url: `/api/v1/wishlist/${id}`,
         method: 'DELETE',
       }),
     }),
@@ -187,6 +179,14 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
+    // delete note based on id
+    deleteOrder: build.mutation({
+      query: (id) => ({
+        url: `/api/v1/orders/${id}`,
+        method: 'DELETE',
+      }),
+    }),
+
     // get order data based on the email
     getorderByemail: build.query({
       query: (email) => ({
@@ -194,7 +194,6 @@ const TrenwaveApi = baseApi.injectEndpoints({
         method: 'GET',
       }),
     }),
-
   }),
 });
 
@@ -205,7 +204,7 @@ export const {
   useAllTutorQuery,
   useCreateNoteMutation,
   useUserNoteQuery,
-  useDeleteNoteMutation,
+  useDeleteOrderMutation,
   useUpdateNoteMutation,
   useUpdateUserMutation,
   useAllProductsQuery,
@@ -216,10 +215,10 @@ export const {
   useTutorApprovedSessionQuery,
   useWishlistPostMutation,
   useGetWishlistByemailQuery,
-  useDeleteMaterialMutation,
+  useDeleteWishlistMutation,
   useUpdateMaterialMutation,
   useAllOrdersQuery,
   useUpdateSessionMutation,
   useGetorderByemailQuery,
-  useBookOrderMutation
+  useBookOrderMutation,
 } = TrenwaveApi;
