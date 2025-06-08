@@ -178,19 +178,19 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // booked post route for student
-    bookPost: build.mutation({
+    // product post route for customer
+    bookOrder: build.mutation({
       query: (body) => ({
-        url: '/api/v1/book-session',
+        url: '/api/v1/orders',
         method: 'POST',
         body,
       }),
     }),
 
-    // get booked session based on the email
-    getbookByemail: build.query({
+    // get order data based on the email
+    getorderByemail: build.query({
       query: (email) => ({
-        url: `/api/v1/book-session/${email}`,
+        url: `/api/v1/orders/${email}`,
         method: 'GET',
       }),
     }),
@@ -220,6 +220,6 @@ export const {
   useUpdateMaterialMutation,
   useAllMaterilQuery,
   useUpdateSessionMutation,
-  useBookPostMutation,
-  useGetbookByemailQuery
+  useGetorderByemailQuery,
+  useBookOrderMutation
 } = TrenwaveApi;

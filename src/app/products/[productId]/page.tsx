@@ -2,6 +2,10 @@
 import { useParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { toast } from 'sonner';
+import { RootState } from '@/redux/store';
+import { useAppSelector } from '@/redux/hooks';
+import { useBookOrderMutation } from '@/redux/api/endApi';
 
 interface ProductData {
   _id: string;
@@ -20,6 +24,8 @@ const ProductDetails = () => {
   const productId = params?.productId as string;
   const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
+  const {user} = useAppSelector((state:RootState) => state.user)
+  const [bookorder] = useBookOrderMutation()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -54,6 +60,26 @@ const ProductDetails = () => {
     return (
       <div className="text-center text-red-500 mt-10">Product not found.</div>
     );
+  }
+
+  const handleBuy = async() =>{
+    try {
+      const payload = {
+        productId: product?._id,
+        productName: product?.name,
+        category: product?.category,
+        rating: product?.rating,
+        price: product?.price,
+        image: product?.image,
+        customerEmail: user?.email,
+      };
+      const postData = await bookorder(payload);
+      console.log(postData);
+      toast.success('order place successfully');
+    } catch (error) {
+      console.log('data posting error', error);
+      toast.error('something went wrong');
+    }
   }
 
   return (
@@ -92,8 +118,11 @@ const ProductDetails = () => {
 
           <div className="text-3xl font-semibold">${product.price}</div>
 
-          <button className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition">
+          <button className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition" onClick={handleBuy}>
             Buy Now
+          </button>
+          <button className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition ms-3">
+            Wish List
           </button>
         </div>
       </div>
