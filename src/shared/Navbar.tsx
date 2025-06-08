@@ -8,7 +8,7 @@ import { RootState } from '@/redux/store';
 import { logout } from '@/redux/features/authentication/userSlice';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
-import Image from 'next/image'; // 👈 Import Image component
+import Image from 'next/image'; 
 
 const MenuIcon = ({ className }: { className?: string }) => (
   <svg

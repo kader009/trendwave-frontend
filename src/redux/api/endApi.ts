@@ -170,10 +170,10 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // all material get route
-    allMateril: build.query({
+    // all orders get route
+    allOrders: build.query({
       query: () => ({
-        url: '/api/v1/material',
+        url: '/api/v1/orders',
         method: 'GET',
       }),
     }),
@@ -218,7 +218,7 @@ export const {
   useGetWishlistByemailQuery,
   useDeleteMaterialMutation,
   useUpdateMaterialMutation,
-  useAllMaterilQuery,
+  useAllOrdersQuery,
   useUpdateSessionMutation,
   useGetorderByemailQuery,
   useBookOrderMutation

@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { Star } from 'lucide-react';
-import { useAllProductsQuery, useDeleteProductMutation } from '@/redux/api/endApi';
+import {
+  useAllProductsQuery,
+  useDeleteProductMutation,
+} from '@/redux/api/endApi';
 import { useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
 import { toast } from 'sonner';
@@ -25,8 +28,8 @@ const AllProducts = () => {
     data: products,
     isLoading,
     isError,
-  } = useAllProductsQuery(user?.email);
-  const [deleteproduct] = useDeleteProductMutation()
+  } = useAllProductsQuery(user?.email, { pollingInterval: 2000 });
+  const [deleteproduct] = useDeleteProductMutation();
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -41,8 +44,8 @@ const AllProducts = () => {
   };
 
   const handleDelete = (id: string) => {
-    deleteproduct(id)
-    toast('product delete successfully')
+    deleteproduct(id);
+    toast('product delete successfully');
   };
 
   return (
@@ -68,15 +71,16 @@ const AllProducts = () => {
               <td className="px-4 py-3 font-medium text-gray-800">
                 {product.name}
               </td>
-              <td className="px-4 py-3 font-medium">
-                ${product.price}
-              </td>
-              <td className="px-4 py-3 font-medium">
-                {product.totalSales}
-              </td>
+              <td className="px-4 py-3 font-medium">${product.price}</td>
+              <td className="px-4 py-3 font-medium">{product.totalSales}</td>
               <td className="px-4 py-3 flex items-center gap-1">
                 {product.rating}
-                <Star size={16} fill="currentColor" stroke="none" className='text-yellow-600'/>
+                <Star
+                  size={16}
+                  fill="currentColor"
+                  stroke="none"
+                  className="text-yellow-600"
+                />
               </td>
               <td className="px-4 py-3">
                 <div className="flex flex-wrap gap-2">
