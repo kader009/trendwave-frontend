@@ -136,19 +136,19 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // material post route for tutor
-    materialPost: build.mutation({
+    // wishlist data post for customer
+    wishlistPost: build.mutation({
       query: (body) => ({
-        url: '/api/v1/material',
+        url: '/api/v1/wishlist',
         method: 'POST',
         body,
       }),
     }),
 
-    // get material based on the email
-    getMaterialByemail: build.query({
+    // get wishlist data based on the email
+    getWishlistByemail: build.query({
       query: (email) => ({
-        url: `/api/v1/material/${email}`,
+        url: `/api/v1/wishlist/${email}`,
         method: 'GET',
       }),
     }),
@@ -214,8 +214,8 @@ export const {
   usePostSessionMutation,
   useTutorSessionQuery,
   useTutorApprovedSessionQuery,
-  useMaterialPostMutation,
-  useGetMaterialByemailQuery,
+  useWishlistPostMutation,
+  useGetWishlistByemailQuery,
   useDeleteMaterialMutation,
   useUpdateMaterialMutation,
   useAllMaterilQuery,

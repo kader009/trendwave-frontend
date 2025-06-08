@@ -5,7 +5,10 @@ import Image from 'next/image';
 import { toast } from 'sonner';
 import { RootState } from '@/redux/store';
 import { useAppSelector } from '@/redux/hooks';
-import { useBookOrderMutation } from '@/redux/api/endApi';
+import {
+  useBookOrderMutation,
+  useWishlistPostMutation,
+} from '@/redux/api/endApi';
 
 interface ProductData {
   _id: string;
@@ -24,8 +27,9 @@ const ProductDetails = () => {
   const productId = params?.productId as string;
   const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const {user} = useAppSelector((state:RootState) => state.user)
-  const [bookorder] = useBookOrderMutation()
+  const { user } = useAppSelector((state: RootState) => state.user);
+  const [bookorder] = useBookOrderMutation();
+  const [addWishList, { isLoading }] = useWishlistPostMutation();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -62,7 +66,7 @@ const ProductDetails = () => {
     );
   }
 
-  const handleBuy = async() =>{
+  const handleBuy = async () => {
     try {
       const payload = {
         productId: product?._id,
@@ -80,7 +84,27 @@ const ProductDetails = () => {
       console.log('data posting error', error);
       toast.error('something went wrong');
     }
-  }
+  };
+
+  const handleWishlist = async () => {
+    try {
+      const payload = {
+        productId: product?._id,
+        productName: product?.name,
+        category: product?.category,
+        rating: product?.rating,
+        price: product?.price,
+        image: product?.image,
+        customerEmail: user?.email,
+      };
+      const postData = await addWishList(payload);
+      console.log(postData);
+      toast.success('product added to wishlist successfully');
+    } catch (error) {
+      console.log('data posting error', error);
+      toast.error('something went wrong');
+    }
+  };
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
@@ -118,11 +142,17 @@ const ProductDetails = () => {
 
           <div className="text-3xl font-semibold">${product.price}</div>
 
-          <button className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition" onClick={handleBuy}>
+          <button
+            className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition"
+            onClick={handleBuy}
+          >
             Buy Now
           </button>
-          <button className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition ms-3">
-            Wish List
+          <button
+            className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition ms-3"
+            onClick={handleWishlist}
+          >
+            {isLoading ? 'Adding...' : 'Wish list'}
           </button>
         </div>
       </div>

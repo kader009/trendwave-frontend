@@ -3,15 +3,11 @@
 import Link from 'next/link';
 import { useState } from 'react';
 import Container from '@/components/ui/Container';
-
-const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'About us', path: '/about-us' },
-  { label: 'Dashboard', path: '/dashboard' },
-  { label: 'Products', path: '/products' },
-  { label: 'Flash sale', path: '/flash-sale' },
-  { label: 'Login', path: '/login' },
-];
+import { useAppDispatch, useAppSelector } from '@/redux/hooks';
+import { RootState } from '@/redux/store';
+import { logout } from '@/redux/features/authentication/userSlice';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const MenuIcon = ({ className }: { className?: string }) => (
   <svg
@@ -32,9 +28,18 @@ const MenuIcon = ({ className }: { className?: string }) => (
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user } = useAppSelector((state: RootState) => state.user);
+  const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
+  };
+
+  const handleLogout = () => {
+    dispatch(logout());
+    router.replace('/login');
+    toast.success('logout successfully');
   };
 
   return (
@@ -44,19 +49,57 @@ const Navbar = () => {
         <Container>
           <div className="flex justify-between items-center py-4">
             {/* Brand Name */}
-            <div className="text-xl font-bold">TrendWave</div>
+            <div className="text-xl font-bold">
+              <Link href="/">TrendWave</Link>
+            </div>
 
             {/* Desktop Menu */}
-            <div className="hidden md:flex space-x-6">
-              {navItems.map((item) => (
+            <div className="hidden md:flex space-x-6 items-center">
+              <Link href="/" className="hover:text-slate-300 transition-colors">
+                Home
+              </Link>
+              <Link
+                href="/about-us"
+                className="hover:text-slate-300 transition-colors"
+              >
+                About us
+              </Link>
+              <Link
+                href="/products"
+                className="hover:text-slate-300 transition-colors"
+              >
+                Products
+              </Link>
+              <Link
+                href="/flash-sale"
+                className="hover:text-slate-300 transition-colors"
+              >
+                Flash Sale
+              </Link>
+
+              {user?.email ? (
+                <>
+                  <Link
+                    href="/dashboard"
+                    className="hover:text-slate-300 transition-colors"
+                  >
+                    Dashboard
+                  </Link>
+                  <button
+                    onClick={handleLogout}
+                    className="hover:text-slate-300 transition-colors"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
                 <Link
-                  key={item.label}
-                  href={item.path}
+                  href="/login"
                   className="hover:text-slate-300 transition-colors"
                 >
-                  {item.label}
+                  Login
                 </Link>
-              ))}
+              )}
             </div>
 
             {/* Mobile Menu Button */}
@@ -82,20 +125,67 @@ const Navbar = () => {
           </button>
         </div>
         <nav className="flex flex-col p-4 space-y-2">
-          {navItems.map((item) => (
+          <Link
+            href="/"
+            className="text-slate-800 hover:bg-slate-100 px-4 py-2 rounded"
+            onClick={handleDrawerToggle}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about-us"
+            className="text-slate-800 hover:bg-slate-100 px-4 py-2 rounded"
+            onClick={handleDrawerToggle}
+          >
+            About us
+          </Link>
+          <Link
+            href="/products"
+            className="text-slate-800 hover:bg-slate-100 px-4 py-2 rounded"
+            onClick={handleDrawerToggle}
+          >
+            Products
+          </Link>
+          <Link
+            href="/flash-sale"
+            className="text-slate-800 hover:bg-slate-100 px-4 py-2 rounded"
+            onClick={handleDrawerToggle}
+          >
+            Flash Sale
+          </Link>
+
+          {user?.email ? (
+            <>
+              <Link
+                href="/dashboard"
+                className="text-slate-800 hover:bg-slate-100 px-4 py-2 rounded"
+                onClick={handleDrawerToggle}
+              >
+                Dashboard
+              </Link>
+              <button
+                onClick={() => {
+                  handleLogout();
+                  handleDrawerToggle();
+                }}
+                className="text-red-600 hover:bg-slate-100 px-4 py-2 rounded text-left cursor-pointer"
+              >
+                Logout
+              </button>
+            </>
+          ) : (
             <Link
-              key={item.label}
-              href={item.path}
+              href="/login"
               className="text-slate-800 hover:bg-slate-100 px-4 py-2 rounded"
               onClick={handleDrawerToggle}
             >
-              {item.label}
+              Login
             </Link>
-          ))}
+          )}
         </nav>
       </div>
 
-      {/* Overlay when drawer is open */}
+      {/* Overlay */}
       {mobileOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-40 z-40"
