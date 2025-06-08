@@ -4,70 +4,61 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-// import { useAppSelector } from '@/redux/hook';
+import { RootState } from '@/redux/store';
+import { useAppSelector } from '@/redux/hooks';
 
 const links = [
   {
-    href: '/dashboard/student/booked-session',
-    label: 'Booked Session',
-    roles: ['student'],
+    href: '/dashboard/customer/view-order',
+    label: 'View Order',
+    roles: ['customer'],
   },
   {
-    href: '/dashboard/student/create-note',
-    label: 'Create Note',
-    roles: ['student'],
+    href: '/dashboard/customer/wishlist',
+    label: 'Wishlist',
+    roles: ['customer'],
   },
   {
-    href: '/dashboard/student/manage-note',
-    label: 'Manage Note',
-    roles: ['student'],
-  },
-  {
-    href: '/dashboard/student/study-material',
-    label: 'Study Material',
-    roles: ['student'],
+    href: '/dashboard/customer/payment-info',
+    label: 'Payment info',
+    roles: ['customer'],
   },
   { href: '/dashboard/admin/all-user', label: 'All User', roles: ['admin'] },
   {
-    href: '/dashboard/admin/all-session',
-    label: 'All Session',
+    href: '/dashboard/admin/all-order',
+    label: 'All Order',
     roles: ['admin'],
   },
   {
-    href: '/dashboard/admin/all-material',
-    label: 'All Material',
+    href: '/dashboard/admin/all-category',
+    label: 'All Category',
     roles: ['admin'],
   },
   {
-    href: '/dashboard/tutor/create-session',
-    label: 'Create Session',
-    roles: ['tutor'],
+    href: '/dashboard/seller/create-product',
+    label: 'Create Product',
+    roles: ['seller'],
   },
   {
-    href: '/dashboard/tutor/view-all-session',
-    label: 'View Session',
-    roles: ['tutor'],
+    href: '/dashboard/seller/view-all-product',
+    label: 'View Product',
+    roles: ['seller'],
   },
   {
-    href: '/dashboard/tutor/upload-material',
-    label: 'Upload Material',
-    roles: ['tutor'],
-  },
-  {
-    href: '/dashboard/tutor/view-all-material',
-    label: 'View Material',
-    roles: ['tutor'],
+    href: '/dashboard/seller/view-order',
+    label: 'View Order',
+    roles: ['seller'],
   },
 ];
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  // const role = useAppSelector((state) =>
-  //   state.user.token ? state.user.user?.role : null
-  // );
+  const role = useAppSelector((state:RootState) =>
+    state.user.token ? state.user.user?.role : null
+  );
 
-  // const filterLinks = links.filter((link) => role && link.roles.includes(role));
+  const filterLinks = links.filter((link) => role && link.roles.includes(role));
 
   // Automatically close sidebar on route change
   useEffect(() => {
