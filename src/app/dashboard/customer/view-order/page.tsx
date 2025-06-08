@@ -26,7 +26,7 @@ const ViewOrder = () => {
     );
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-10">
+    <div className="max-w-7xl mx-auto px-4 py-10">
       <h1 className="text-3xl md:text-4xl font-bold mb-10 text-center text-slate-800">
         Your Orders
       </h1>
@@ -35,7 +35,7 @@ const ViewOrder = () => {
         {data?.map((order: Orders) => (
           <div
             key={order._id}
-            className="bg-white rounded-xl shadow-lg border hover:shadow-xl transition-all duration-300"
+            className="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300"
           >
             <div className="relative w-full h-56">
               <Image
@@ -58,7 +58,7 @@ const ViewOrder = () => {
                 Price: <span className="text-blue-600">${order.price}</span>
               </p>
 
-              <button className="mt-4 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition">
+              <button className="mt-4 w-full bg-black text-white py-2 rounded-md hover:bg-gray-700 transition">
                 Pay Now
               </button>
             </div>
