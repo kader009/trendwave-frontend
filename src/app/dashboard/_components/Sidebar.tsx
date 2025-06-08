@@ -15,12 +15,12 @@ const links = [
   },
   {
     href: '/dashboard/customer/wishlist',
-    label: 'Wishlist',
+    label: 'Wish List',
     roles: ['customer'],
   },
   {
     href: '/dashboard/customer/payment-info',
-    label: 'Payment info',
+    label: 'Payment Info',
     roles: ['customer'],
   },
   { href: '/dashboard/admin/all-user', label: 'All User', roles: ['admin'] },
