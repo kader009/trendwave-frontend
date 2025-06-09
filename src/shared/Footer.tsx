@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1E293B] text-white pt-16 pb-8 relative overflow-hidden">
+    <footer className="bg-[#ACC8E5] text-white pt-16 pb-8 relative overflow-hidden">
       <Container>
         <div className="max-w-[86rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 relative z-10">
           {/* Logo & About */}
@@ -11,7 +11,7 @@ const Footer = () => {
             <div className="flex items-center gap-2">
               <h1 className="text-2xl font-bold">TrendWave</h1>
             </div>
-            <p className="mt-4 text-gray-300 text-sm leading-relaxed">
+            <p className="mt-4 text-white text-sm leading-relaxed">
               Discover trends, shop smart. TrendWave brings top brands & vendors
               together in one seamless experience.
             </p>
@@ -27,7 +27,7 @@ const Footer = () => {
           {/* Newsletter */}
           <div>
             <h2 className="text-lg font-semibold mb-3">Stay in the Loop!</h2>
-            <p className="text-sm text-gray-400 mb-3">
+            <p className="text-sm text-white mb-3">
               Get exclusive deals, style tips, and the latest news delivered to
               your inbox.
             </p>
@@ -49,7 +49,7 @@ const Footer = () => {
           {/* Useful Links */}
           <div>
             <h3 className="text-lg font-semibold mb-3">Explore</h3>
-            <ul className="space-y-2 text-sm text-gray-400">
+            <ul className="space-y-2 text-sm text-white">
               <li>
                 <Link
                   href="/about"
@@ -95,13 +95,13 @@ const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="text-lg font-semibold mb-3">Connect With Us</h3>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-white">
               123 Trend Street, Dhaka, Bangladesh
             </p>
-            <p className="text-sm text-gray-400 mt-2">
+            <p className="text-sm text-white mt-2">
               Email: support@trendwave.com
             </p>
-            <p className="text-sm text-gray-400">Phone: +880 123 456 789</p>
+            <p className="text-sm text-white">Phone: +880 123 456 789</p>
 
             <div className="mt-4 flex gap-4">
               {/* Social Icons (same as before) */}
@@ -175,7 +175,7 @@ const Footer = () => {
         <div className="mt-10 border-t border-gray-700 pt-6 relative z-10">
           {' '}
           {/* Added relative z-10 */}
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400">
+          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-white">
             <p>© {new Date().getFullYear()} TrendWave. All rights reserved.</p>
             <div className="flex items-center gap-4 mt-4 md:mt-0">
               <Link

@@ -46,7 +46,7 @@ const Navbar = () => {
   return (
     <div>
       {/* Navbar */}
-      <nav className="bg-slate-800 text-white">
+      <nav className="bg-[#ACC8E5] text-white">
         <Container>
           <div className="flex justify-between items-center py-4">
             {/* Brand Name */}
