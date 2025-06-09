@@ -3,6 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Container from '@/components/ui/Container';
+import Spinner from '@/components/Sppiner';
 
 type Product = {
   _id: string;
@@ -80,107 +81,122 @@ const ProductListing = () => {
 
   return (
     <Container>
-    <div className="flex flex-col lg:flex-row">
-      <aside className="w-full lg:w-1/4 bg-white shadow-md p-6 lg:sticky lg:top-0 lg:h-screen">
-        <h1 className="text-2xl font-bold mb-4">Filters</h1>
+      <div className="flex flex-col lg:flex-row">
+        {/* Sidebar Filters */}
+        <aside className="w-full lg:w-1/4 bg-white shadow-md p-6 lg:sticky lg:top-0 lg:h-screen">
+          <h1 className="text-2xl font-bold mb-4">Filters</h1>
 
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          placeholder="Search products..."
-          className="w-full p-2 border rounded-md mb-6"
-        />
-
-        <div className="mb-6">
-          <h3 className="font-semibold mb-2">Category</h3>
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="w-full p-2 border rounded-md"
-          >
-            <option value="">All</option>
-            {categories.map((cat) => (
-              <option key={cat} value={cat}>
-                {cat}
-              </option>
-            ))}
-          </select>
-        </div>
-
-        <div className="mb-6">
-          <h2 className="font-semibold mb-2">Price</h2>
           <input
-            type="range"
-            min="0"
-            max="100"
-            value={priceRange[1]}
-            onChange={(e) => setPriceRange([0, +e.target.value])}
-            className="w-full"
+            type="text"
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            placeholder="Search products..."
+            className="w-full p-2 border rounded-md mb-6"
           />
-          <p className="text-sm mt-1">
-            ${priceRange[0]} - ${priceRange[1]}
-          </p>
-        </div>
 
-        <div className="mb-6">
-          <h3 className="font-semibold mb-2">Rating</h3>
-          <select
-            value={selectedRating}
-            onChange={(e) => setSelectedRating(e.target.value)}
-            className="w-full p-2 border rounded-md"
-          >
-            <option value="">All</option>
-            {ratings.map((rating) => (
-              <option key={rating} value={rating}>
-                {rating}+ stars
-              </option>
-            ))}
-          </select>
-        </div>
-      </aside>
-
-      <main className="w-full lg:w-3/4 p-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {loading ? (
-          <p>Loading...</p>
-        ) : featuredProducts.length > 0 ? (
-          featuredProducts.map((product) => (
-            <div
-              key={product._id}
-              className="bg-white shadow-lg rounded-lg p-4 hover:shadow-xl transition-all"
+          <div className="mb-6">
+            <h3 className="font-semibold mb-2">Category</h3>
+            <select
+              value={selectedCategory}
+              onChange={(e) => setSelectedCategory(e.target.value)}
+              className="w-full p-2 border rounded-md"
             >
-              <Image
-                src={product.image}
-                alt={product.name}
-                width={400}
-                height={400}
-                loading='lazy'
-                className="w-full h-56 object-cover rounded-md"
-              />
-              <h3 className="text-lg font-bold mt-2">{product.name}</h3>
-              <p className="text-sm text-gray-500">{product.category}</p>
-              <p className="font-bold mt-1">${product.price}</p>
-              <div className="flex items-center mt-2">
-                <span className="text-yellow-500 text-sm">
-                  {'★'.repeat(Math.floor(product.rating))}
-                </span>
-                <span className="ml-2 text-sm text-gray-500">
-                  ({product.rating.toFixed(1)} Stars)
-                </span>
-              </div>
-              <Link
-                href={`/products/${product._id}`}
-                className="mt-4 inline-block w-full text-center bg-black text-white py-2 rounded-md hover:bg-gray-600"
-              >
-                View Details
-              </Link>
+              <option value="">All</option>
+              {categories.map((cat) => (
+                <option key={cat} value={cat}>
+                  {cat}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="mb-6">
+            <h2 className="font-semibold mb-2">Price</h2>
+            <input
+              type="range"
+              min="0"
+              max="100"
+              value={priceRange[1]}
+              onChange={(e) => setPriceRange([0, +e.target.value])}
+              className="w-full"
+            />
+            <p className="text-sm mt-1">
+              ${priceRange[0]} - ${priceRange[1]}
+            </p>
+          </div>
+
+          <div className="mb-6">
+            <h3 className="font-semibold mb-2">Rating</h3>
+            <select
+              value={selectedRating}
+              onChange={(e) => setSelectedRating(e.target.value)}
+              className="w-full p-2 border rounded-md"
+            >
+              <option value="">All</option>
+              {ratings.map((rating) => (
+                <option key={rating} value={rating}>
+                  {rating}+ stars
+                </option>
+              ))}
+            </select>
+          </div>
+        </aside>
+
+        {/* Main Product Grid */}
+        <main className="w-full lg:w-3/4 p-6">
+          {loading ? (
+            <Spinner />
+          ) : featuredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {featuredProducts.map((product) => (
+                <div
+                  key={product._id}
+                  className="bg-white rounded-lg shadow-sm p-3 flex flex-col justify-between hover:shadow-lg transition"
+                >
+                  {/* Product Image with Hover Zoom */}
+                  <div className="relative group">
+                    <div className="h-56 w-full rounded-md overflow-hidden bg-gray-100 relative">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Product Info */}
+                  <div className="px-2 pt-2">
+                    <p
+                      className="text-sm font-medium truncate"
+                      title={product.name}
+                    >
+                      {product.name}
+                    </p>
+                    <p className="text-sm text-gray-500">{product.category}</p>
+                    <div className="flex items-center justify-between mt-1">
+                      <span className="text-sm font-bold">${product.price}</span>
+                      <div className="text-yellow-500 text-sm">
+                        {product.rating}{'★'.repeat(Math.floor(product.rating))}
+                      </div>
+                    </div>
+                    <div className="flex justify-end mt-2">
+                      <Link href={`/products/${product._id}`}>
+                        <button className="bg-[#3973B7] text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition">
+                          Detail &rarr;
+                        </button>
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
-          ))
-        ) : (
-          <p>No products match your filters.</p>
-        )}
-      </main>
-    </div>
+          ) : (
+            <p className="text-gray-500">No products match your filters.</p>
+          )}
+        </main>
+      </div>
     </Container>
   );
 };
