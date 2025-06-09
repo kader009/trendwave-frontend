@@ -88,7 +88,7 @@ const OrderTable = () => {
               </td>
               <td className="px-4 py-2 space-x-2">
                 <button
-                  className="text-white hover:underline text-sm bg-black px-3 py-1 rounded-full"
+                  className="text-white text-sm bg-black px-3 py-1 rounded-full cursor-pointer"
                   onClick={() => handleRemove(order._id)}
                 >
                   Delete

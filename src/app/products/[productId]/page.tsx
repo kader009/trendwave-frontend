@@ -30,6 +30,7 @@ const ProductDetails = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
   const [bookorder] = useBookOrderMutation();
   const [addWishList, { isLoading }] = useWishlistPostMutation();
+  const isDisabled = ['admin', 'seller'].includes(user?.role || '');
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -145,14 +146,28 @@ const ProductDetails = () => {
           <div className="text-3xl font-semibold">${product.price}</div>
 
           <button
-            className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition"
+            className={`mt-6 px-8 py-3 text-white font-semibold rounded-full shadow-sm transition 
+              ${
+                isDisabled
+                  ? 'bg-gray-400 cursor-not-allowed'
+                  : 'bg-black hover:scale-105'
+              }
+            `}
             onClick={handleBuy}
+            disabled={isDisabled}
           >
             Buy Now
           </button>
           <button
-            className="mt-6 px-8 py-3 bg-black text-white font-semibold rounded-full shadow-sm hover:scale-105 transition ms-3"
+            className={`mt-6 px-8 py-3 text-white font-semibold rounded-full shadow-sm transition 
+              ${
+                isDisabled
+                  ? 'bg-gray-400 cursor-not-allowed ms-2'
+                  : 'bg-black hover:scale-105'
+              }
+            `}
             onClick={handleWishlist}
+            disabled={isDisabled}
           >
             {isLoading ? 'Adding...' : 'Wish list'}
           </button>

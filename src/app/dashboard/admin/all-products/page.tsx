@@ -86,13 +86,13 @@ const AllProducts = () => {
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={() => handleUpdate(product?._id)}
-                    className="bg-black hover:bg-gray-700 text-white px-3 py-1 rounded text-sm"
+                    className="bg-black hover:bg-gray-700 cursor-pointer text-white px-3 py-1 rounded text-sm"
                   >
                     Update
                   </button>
                   <button
                     onClick={() => handleDelete(product?._id)}
-                    className="bg-black hover:bg-gray-700 text-white px-3 py-1 rounded text-sm"
+                    className="bg-black hover:bg-gray-700 cursor-pointer text-white px-3 py-1 rounded text-sm"
                   >
                     Delete
                   </button>
