@@ -1,7 +1,10 @@
 'use client';
 
 import Image from 'next/image';
-import { useGetorderByemailQuery, useDeleteOrderMutation } from '@/redux/api/endApi';
+import {
+  useGetorderByemailQuery,
+  useDeleteOrderMutation,
+} from '@/redux/api/endApi';
 import { useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
 import { toast } from 'sonner';
@@ -18,7 +21,10 @@ interface Orders {
 
 const ViewOrder = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
-  const { data, isLoading, error, refetch } = useGetorderByemailQuery(user?.email);
+  const { data, isLoading, error, refetch } = useGetorderByemailQuery(
+    user?.email,
+    { pollingInterval: 2000 }
+  );
   const [deleteOrder] = useDeleteOrderMutation();
 
   const handleRemove = async (id: string) => {
@@ -41,9 +47,7 @@ const ViewOrder = () => {
 
   if (!data || data.length === 0) {
     return (
-      <p className="text-center mt-10 text-gray-500">
-        You have no orders yet.
-      </p>
+      <p className="text-center mt-10 text-gray-500">You have no orders yet.</p>
     );
   }
 
@@ -85,7 +89,7 @@ const ViewOrder = () => {
                   Pay Now
                 </button>
                 <button
-                  className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
+                  className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-600 transition"
                   onClick={() => handleRemove(order._id)}
                 >
                   Remove
