@@ -86,7 +86,7 @@ const Sidebar = () => {
         } md:relative md:translate-x-0 md:h-auto`}
       >
         <h2 className="text-2xl font-bold mb-4">
-          <Link href={'/'}>Dashboard</Link>
+          <Link href={'/'}>TrendWave</Link>
         </h2>
         <ul className="space-y-2">
           {filterLinks.map((link) => (
