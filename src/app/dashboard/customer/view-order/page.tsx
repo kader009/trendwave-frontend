@@ -52,8 +52,8 @@ const ViewOrder = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <h1 className="text-3xl md:text-4xl font-bold mb-10 text-center text-slate-800">
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <h1 className="text-2xl md:text-3xl font-bold mb-10 text-center text-slate-800">
         Your Orders
       </h1>
 
@@ -81,7 +81,7 @@ const ViewOrder = () => {
                 Category: {order.category}
               </p>
               <p className="text-base font-medium text-gray-700">
-                Price: <span className="text-blue-600">${order.price}</span>
+                Price: <span className="text-black">${order.price}</span>
               </p>
 
               <div className="flex gap-3">

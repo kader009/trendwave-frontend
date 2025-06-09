@@ -21,22 +21,23 @@ const slides: Slide[] = [
   {
     id: 1,
     image: '/slide1.webp',
-    title: 'Welcome to Our Site',
-    subtitle: 'Explore the beauty of technology.',
+    title: 'Welcome to TrendWave',
+    subtitle: 'Find the best deals on your favorite products.',
   },
   {
     id: 2,
     image: '/slide2.webp',
-    title: 'Discover New Ideas',
-    subtitle: 'Learn, Build, and Share!',
+    title: 'Shop the Latest Trends',
+    subtitle: 'Fashion, electronics, and more — all in one place!',
   },
   {
     id: 3,
     image: '/slide3.webp',
-    title: 'Achieve Your Goals',
-    subtitle: 'We help you move forward.',
+    title: 'Fast Delivery & Great Support',
+    subtitle: 'We deliver happiness right to your door.',
   },
 ];
+
 
 export default function Header() {
   const progressCircle = useRef<SVGSVGElement>(null);

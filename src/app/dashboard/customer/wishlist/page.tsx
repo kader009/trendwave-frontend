@@ -52,8 +52,8 @@ const WishList = () => {
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-10">
-      <h1 className="text-3xl md:text-4xl font-bold mb-10 text-center text-slate-800">
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <h1 className="text-2xl md:text-3xl font-bold mb-10 text-center text-slate-800">
         Your Wishlist
       </h1>
 
@@ -81,7 +81,7 @@ const WishList = () => {
                 Category: {wishlist.category}
               </p>
               <p className="text-base font-medium text-gray-700">
-                Price: <span className="text-blue-600">${wishlist.price}</span>
+                Price: <span className="text-black">${wishlist.price}</span>
               </p>
 
               <div className="flex gap-3">
@@ -90,7 +90,7 @@ const WishList = () => {
                 </button>
                 <button
                   onClick={() => handleRemove(wishlist._id)}
-                  className="w-full bg-red-500 text-white py-2 rounded-md hover:bg-red-600 transition"
+                  className="w-full bg-black text-white py-2 rounded-md hover:bg-gray-600 transition"
                 >
                   Remove
                 </button>
