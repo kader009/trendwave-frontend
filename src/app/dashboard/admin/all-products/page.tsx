@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import { useState } from 'react';
 import { Star } from 'lucide-react';
 import {
   useAllProductsQuery,
@@ -31,13 +31,21 @@ const AllProducts = () => {
     isError,
   } = useAllProductsQuery(user?.email, { pollingInterval: 2000 });
   const [deleteproduct] = useDeleteProductMutation();
+  const [visibleCount, setVisibleCount] = useState(15);
+  const Handleview = () => {
+    setVisibleCount((prev) => prev + 10);
+  };
 
   if (isLoading) {
-    return <Spinner/>;
+    return <Spinner />;
   }
 
   if (isError) {
-    return <div>Something went wrong</div>;
+    return (
+      <div className="text-red-600 text-center font-bold">
+        Something went wrong
+      </div>
+    );
   }
 
   const handleUpdate = (id: string) => {
@@ -48,6 +56,8 @@ const AllProducts = () => {
     deleteproduct(id);
     toast('product delete successfully');
   };
+
+  const visibleData = products.slice(0, visibleCount);
 
   return (
     <div className="overflow-x-auto w-full bg-white p-4 rounded-lg shadow-md">
@@ -66,7 +76,7 @@ const AllProducts = () => {
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-100">
-          {products?.map((product: Product, index: number) => (
+          {visibleData?.map((product: Product, index: number) => (
             <tr key={product._id} className="hover:bg-gray-50">
               <td className="px-4 py-3">{index + 1}</td>
               <td className="px-4 py-3 font-medium text-gray-800">
@@ -103,6 +113,17 @@ const AllProducts = () => {
           ))}
         </tbody>
       </table>
+      {/* View More Button */}
+      {visibleCount < products?.length && (
+        <div className="flex justify-center mt-6">
+          <button
+            onClick={Handleview}
+            className="bg-[#3973B7] hover:bg-gray-800 text-white px-6 py-2 rounded-full transition"
+          >
+            View More
+          </button>
+        </div>
+      )}
     </div>
   );
 };
