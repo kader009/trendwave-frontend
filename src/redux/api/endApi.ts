@@ -119,10 +119,10 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // update session fee from admin
-    updateSession: build.mutation({
+    // update product from admin
+    updateProduct: build.mutation({
       query: ({ id, body }) => ({
-        url: `/api/v1/session/${id}`,
+        url: `/api/v1/products/${id}`,
         method: 'PATCH',
         body,
       }),
@@ -145,7 +145,7 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // wishlist delete from tutor
+    // wishlist delete from customar
     deleteWishlist: build.mutation({
       query: (id) => ({
         url: `/api/v1/wishlist/${id}`,
@@ -218,7 +218,7 @@ export const {
   useDeleteWishlistMutation,
   useUpdateMaterialMutation,
   useAllOrdersQuery,
-  useUpdateSessionMutation,
+  useUpdateProductMutation,
   useGetorderByemailQuery,
   useBookOrderMutation,
 } = TrenwaveApi;
