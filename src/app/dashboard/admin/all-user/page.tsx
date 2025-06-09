@@ -1,5 +1,96 @@
+'use client';
+
+import Image from 'next/image';
+import { useAllUserQuery, useUpdateUserMutation } from '@/redux/api/endApi';
+import { useAppSelector } from '@/redux/hooks';
+import { RootState } from '@/redux/store';
+import { toast } from 'sonner';
+import Spinner from '@/components/Sppiner';
+
+interface userData {
+  _id: string;
+  name: string;
+  email: string;
+  image: string;
+  role: string;
+}
+
 const AllUser = () => {
-  return <div>AllUser</div>;
+  const { user } = useAppSelector((state: RootState) => state.user);
+  const {
+    data: users,
+    isLoading,
+    refetch,
+  } = useAllUserQuery(user?.email, {
+    pollingInterval: 2000,
+  });
+  const [updateUser] = useUpdateUserMutation();
+
+  const handleRoleUpdate = async (id: string) => {
+    try {
+      await updateUser(id);
+      toast.success('user Role update successfully');
+      refetch(); // refresh the list
+    } catch (err) {
+      toast.error('Failed to remove order');
+      console.error(err);
+    }
+  };
+
+  if (isLoading) return <Spinner/>;
+
+  return (
+    <div className="max-w-7xl mx-auto px-4 py-8">
+      <h1 className="text-2xl font-bold mb-6">All Users</h1>
+      <div className="overflow-x-auto rounded-lg shadow">
+        <table className="min-w-full bg-white border border-gray-200">
+          <thead className="bg-gray-100 text-left text-sm text-gray-600">
+            <tr>
+              <th className="px-4 py-3">Image</th>
+              <th className="px-4 py-3">Name</th>
+              <th className="px-4 py-3">Email</th>
+              <th className="px-4 py-3">Role</th>
+              <th className="px-4 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {users?.map((u: userData) => (
+              <tr key={u._id} className="border-t">
+                <td className="px-4 py-3">
+                  <div className="w-12 h-12 relative rounded-full overflow-hidden">
+                    <Image
+                      src={u.image || '/default-user.png'}
+                      alt={u.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </td>
+                <td className="px-4 py-3 font-medium">{u.name}</td>
+                <td className="px-4 py-3 text-sm text-gray-700">{u.email}</td>
+                <td className="px-4 py-3">
+                  <span className="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full capitalize">
+                    {u.role}
+                  </span>
+                </td>
+                <td className="px-4 py-3">
+                  <button
+                    className="text-sm text-white bg-black px-3 py-1 rounded hover:bg-gray-600 transition"
+                    onClick={() => handleRoleUpdate(u._id)}
+                  >
+                    Change role
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {users?.length === 0 && (
+          <p className="text-center py-4 text-gray-500">No users found.</p>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default AllUser;

@@ -1,5 +1,6 @@
 'use client';
 
+import Spinner from '@/components/Sppiner';
 import { useAllOrdersQuery, useDeleteOrderMutation } from '@/redux/api/endApi';
 import { useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
@@ -40,11 +41,11 @@ const OrderTable = () => {
     }
   };
 
-  if (isLoading) return <p className="text-center py-4">Loading...</p>;
+  if (isLoading) return <Spinner/>;
 
   return (
     <div className="overflow-x-auto w-full bg-white p-4 rounded-lg shadow">
-      <h2 className="text-xl font-semibold text-slate-800 mb-4">All Orders</h2>
+      <h1 className="text-xl font-semibold text-slate-800 mb-4">All Orders</h1>
       <table className="min-w-full text-sm md:text-base divide-y divide-gray-200">
         <thead className="bg-slate-800 text-white">
           <tr>

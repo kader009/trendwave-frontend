@@ -9,6 +9,7 @@ import {
 import { useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
 import { toast } from 'sonner';
+import Spinner from '@/components/Sppiner';
 
 type Product = {
   _id: string;
@@ -32,7 +33,7 @@ const AllProducts = () => {
   const [deleteproduct] = useDeleteProductMutation();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Spinner/>;
   }
 
   if (isError) {

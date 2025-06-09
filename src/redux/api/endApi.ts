@@ -61,7 +61,7 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // update user role from user/tutor to admin
+    // update user role from customer/seller to admin
     updateUser: build.mutation({
       query: ({ id, role }) => ({
         url: `/api/v1/user/${id}`,
