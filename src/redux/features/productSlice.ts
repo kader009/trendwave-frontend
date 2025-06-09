@@ -44,6 +44,10 @@ const createProductSlice = createSlice({
       state.rating = action.payload;
     },
 
+    SetImageUrl: (state, action: PayloadAction<string>) => {
+      state.imageUrl = action.payload;
+    },
+
     SetStock: (state, action: PayloadAction<string>) => {
       state.stock = action.payload;
     },
@@ -57,6 +61,7 @@ export const {
   SetRating,
   SetStock,
   SetproductDescription,
+  SetImageUrl
 } = createProductSlice.actions;
 
 export default createProductSlice.reducer;
