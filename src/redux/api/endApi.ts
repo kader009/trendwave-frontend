@@ -106,7 +106,7 @@ const TrenwaveApi = baseApi.injectEndpoints({
     // seller products get with email query
     sellerProduct: build.query({
       query: (email) => ({
-        url: `/api/v1/proudcts/email/${email}`,
+        url: `/api/v1/products/email/${email}`,
         method: 'GET',
       }),
     }),
