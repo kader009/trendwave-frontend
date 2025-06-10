@@ -28,7 +28,7 @@ const FlashSale = async () => {
           <div className="flex items-center justify-between mb-6">
             <h1 className="text-xl md:text-2xl font-bold">Flash Sale</h1>
             <Link href="/flash-sale">
-              <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
+              <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer dark:bg-gray-600">
                 View All <span className="ml-1">&rarr;</span>
               </button>
             </Link>
@@ -65,7 +65,7 @@ const FlashSale = async () => {
                   {/* Product Info */}
                   <div className="px-2 pt-2">
                     <p
-                      className="text-sm font-medium truncate"
+                      className="text-sm font-medium truncate dark:text-black"
                       title={product.name}
                     >
                       {product.name}
@@ -74,7 +74,7 @@ const FlashSale = async () => {
                       <span className="text-sm line-through text-gray-500">
                         ${product.price + (product.discount ?? 10)}
                       </span>
-                      <span className="text-sm font-bold">
+                      <span className="text-sm font-bold dark:text-black">
                         ${product.price}
                       </span>
                     </div>

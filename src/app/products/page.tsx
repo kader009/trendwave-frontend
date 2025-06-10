@@ -84,22 +84,22 @@ const ProductListing = () => {
       <div className="flex flex-col lg:flex-row">
         {/* Sidebar Filters */}
         <aside className="w-full lg:w-1/4 bg-white shadow-md p-6 lg:sticky lg:top-0 lg:h-screen">
-          <h1 className="text-2xl font-bold mb-4">Filters</h1>
+          <h1 className="text-2xl font-bold mb-4 dark:text-black">Filters</h1>
 
           <input
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Search products..."
-            className="w-full p-2 border rounded-md mb-6"
+            className="w-full p-2 border rounded-md mb-6 dark:text-black"
           />
 
           <div className="mb-6">
-            <h3 className="font-semibold mb-2">Category</h3>
+            <h3 className="font-semibold mb-2 dark:text-black">Category</h3>
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md dark:text-black"
             >
               <option value="">All</option>
               {categories.map((cat) => (
@@ -111,26 +111,26 @@ const ProductListing = () => {
           </div>
 
           <div className="mb-6">
-            <h2 className="font-semibold mb-2">Price</h2>
+            <h2 className="font-semibold mb-2 dark:text-black">Price</h2>
             <input
               type="range"
               min="0"
               max="100"
               value={priceRange[1]}
               onChange={(e) => setPriceRange([0, +e.target.value])}
-              className="w-full"
+              className="w-full "
             />
-            <p className="text-sm mt-1">
+            <p className="text-sm mt-1 dark:text-black">
               ${priceRange[0]} - ${priceRange[1]}
             </p>
           </div>
 
           <div className="mb-6">
-            <h3 className="font-semibold mb-2">Rating</h3>
+            <h3 className="font-semibold mb-2 dark:text-black">Rating</h3>
             <select
               value={selectedRating}
               onChange={(e) => setSelectedRating(e.target.value)}
-              className="w-full p-2 border rounded-md"
+              className="w-full p-2 border rounded-md dark:text-black"
             >
               <option value="">All</option>
               {ratings.map((rating) => (
@@ -169,21 +169,21 @@ const ProductListing = () => {
                   {/* Product Info */}
                   <div className="px-2 pt-2">
                     <p
-                      className="text-sm font-medium truncate"
+                      className="text-sm font-medium truncate dark:text-black"
                       title={product.name}
                     >
                       {product.name}
                     </p>
                     <p className="text-sm text-gray-500">{product.category}</p>
                     <div className="flex items-center justify-between mt-1">
-                      <span className="text-sm font-bold">${product.price}</span>
+                      <span className="text-sm font-bold dark:text-black">${product.price}</span>
                       <div className="text-yellow-500 text-sm">
                         {product.rating}{'★'.repeat(Math.floor(product.rating))}
                       </div>
                     </div>
                     <div className="flex justify-end mt-2">
                       <Link href={`/products/${product._id}`}>
-                        <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition">
+                        <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
                           Detail &rarr;
                         </button>
                       </Link>

@@ -29,22 +29,23 @@ const AllUser = () => {
   const handleRoleUpdate = async (id: string) => {
     try {
       await updateUser(id);
-      toast.success('user Role update successfully');
-      refetch(); // refresh the list
+      toast.success('User role updated successfully');
+      refetch();
     } catch (err) {
-      toast.error('Failed to remove order');
+      toast.error('Failed to update role');
       console.error(err);
     }
   };
 
-  if (isLoading) return <Spinner/>;
+  if (isLoading) return <Spinner />;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold mb-6">All Users</h1>
-      <div className="overflow-x-auto rounded-lg shadow">
-        <table className="min-w-full bg-white border border-gray-200">
-          <thead className="bg-gray-100 text-left text-sm text-gray-600">
+    <div className="max-w-[84rem] mx-auto px-4 py-6">
+      <h1 className="text-2xl font-bold mb-6 text-black">All Users</h1>
+
+      <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+        <table className="min-w-[700px] w-full text-sm text-left border border-gray-200">
+          <thead className="bg-black text-white">
             <tr>
               <th className="px-4 py-3">Image</th>
               <th className="px-4 py-3">Name</th>
@@ -55,9 +56,9 @@ const AllUser = () => {
           </thead>
           <tbody>
             {users?.map((u: userData) => (
-              <tr key={u._id} className="border-t">
+              <tr key={u._id} className="border-t hover:bg-gray-50 transition">
                 <td className="px-4 py-3">
-                  <div className="w-12 h-12 relative rounded-full overflow-hidden">
+                  <div className="w-10 h-10 relative rounded-full overflow-hidden">
                     <Image
                       src={u.image || '/default-user.png'}
                       alt={u.name}
@@ -66,25 +67,26 @@ const AllUser = () => {
                     />
                   </div>
                 </td>
-                <td className="px-4 py-3 font-medium">{u.name}</td>
-                <td className="px-4 py-3 text-sm text-gray-700">{u.email}</td>
+                <td className="px-4 py-3 font-medium text-gray-900">{u.name}</td>
+                <td className="px-4 py-3 text-gray-700">{u.email}</td>
                 <td className="px-4 py-3">
-                  <span className="bg-blue-100 text-blue-700 text-xs px-3 py-1 rounded-full capitalize">
+                  <span className="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full capitalize whitespace-nowrap">
                     {u.role}
                   </span>
                 </td>
                 <td className="px-4 py-3">
                   <button
-                    className="text-sm text-white bg-black px-3 py-1 rounded hover:bg-gray-600 transition"
+                    className="text-sm bg-black text-white px-4 py-1 rounded hover:bg-gray-700 transition whitespace-nowrap"
                     onClick={() => handleRoleUpdate(u._id)}
                   >
-                    Change role
+                    Change Role
                   </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
+
         {users?.length === 0 && (
           <p className="text-center py-4 text-gray-500">No users found.</p>
         )}

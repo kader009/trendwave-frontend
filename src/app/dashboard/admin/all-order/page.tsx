@@ -63,7 +63,7 @@ const OrderTable = () => {
         <tbody className="divide-y divide-gray-100">
           {orders?.map((order: Orders, index: number) => (
             <tr key={order._id} className="hover:bg-gray-50">
-              <td className="px-4 py-3">{index + 1}</td>
+              <td className="px-4 py-3 dark:text-black">{index + 1}</td>
               <td className="px-4 py-2">
                 <Image
                   src={order.image}
@@ -78,9 +78,9 @@ const OrderTable = () => {
               </td>
               <td className="px-4 py-2 text-slate-600">{order.category}</td>
               <td className="px-4 py-2">
-                <span className=" font-semibold">{order.rating} ⭐</span>
+                <span className=" font-semibold dark:text-black">{order.rating} ⭐</span>
               </td>
-              <td className="px-4 py-2 font-semibold ">${order.price}</td>
+              <td className="px-4 py-2 font-semibold dark:text-black">${order.price}</td>
               <td className="px-4 py-2 text-slate-600">
                 {order.customerEmail}
               </td>

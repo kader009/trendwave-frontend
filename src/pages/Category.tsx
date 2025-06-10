@@ -19,10 +19,10 @@ const Category = async () => {
     <div className="mt-20 mx-6">
       <Container>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800">
+          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
             Top Categories
           </h1>
-          <p className="mt-2 text-gray-600 max-w-xl mx-auto">
+          <p className="mt-2 text-gray-600 max-w-xl mx-auto dark:text-white">
             Discover the most popular categories loved by our users.
           </p>
         </div>
@@ -95,7 +95,7 @@ const Category = async () => {
         {/* View All Button */}
         <div className="mt-10 text-center">
           <Link href={'/products'}>
-            <button className="inline-flex items-center gap-2 px-4 py-1 bg-black text-white rounded-full hover:bg-gray-800 transition cursor-pointer">
+            <button className="inline-flex items-center gap-2 px-4 py-1 bg-black text-white rounded-full hover:bg-gray-800 transition cursor-pointer dark:bg-gray-600">
               View All <span className="text-xl">&rarr;</span>
             </button>
           </Link>

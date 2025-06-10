@@ -49,7 +49,12 @@ const AllProducts = () => {
   };
 
   if (isLoading) return <Spinner />;
-  if (isError) return <div className="text-red-600 text-center font-bold">Something went wrong</div>;
+  if (isError)
+    return (
+      <div className="text-red-600 text-center font-bold">
+        Something went wrong
+      </div>
+    );
 
   const handleUpdate = (product: Product) => {
     setSelectedProduct(product);
@@ -93,7 +98,9 @@ const AllProducts = () => {
 
   return (
     <div className="overflow-x-auto w-full bg-white p-4 rounded-lg shadow-md">
-      <h1 className="text-xl font-semibold text-slate-700 mb-4">All Products</h1>
+      <h1 className="text-xl font-semibold text-slate-700 mb-4">
+        All Products
+      </h1>
 
       <table className="min-w-full divide-y divide-gray-200 text-sm md:text-base">
         <thead className="bg-slate-800 text-white">
@@ -109,13 +116,20 @@ const AllProducts = () => {
         <tbody className="divide-y divide-gray-100">
           {visibleData?.map((product: Product, index: number) => (
             <tr key={product._id} className="hover:bg-gray-50">
-              <td className="px-4 py-3">{index + 1}</td>
-              <td className="px-4 py-3 font-medium text-gray-800">{product.name}</td>
-              <td className="px-4 py-3 font-medium">${product.price}</td>
-              <td className="px-4 py-3 font-medium">{product.totalSales}</td>
-              <td className="px-4 py-3 flex items-center gap-1">
+              <td className="px-4 py-3 dark:text-black">{index + 1}</td>
+              <td className="px-4 py-3 font-medium text-gray-800">
+                {product.name}
+              </td>
+              <td className="px-4 py-3 font-medium dark:text-black">${product.price}</td>
+              <td className="px-4 py-3 font-medium dark:text-black">{product.totalSales}</td>
+              <td className="px-4 py-3 flex items-center gap-1 dark:text-black">
                 {product.rating}
-                <Star size={16} fill="currentColor" stroke="none" className="text-yellow-600" />
+                <Star
+                  size={16}
+                  fill="currentColor"
+                  stroke="none"
+                  className="text-yellow-600"
+                />
               </td>
               <td className="px-4 py-3">
                 <div className="flex flex-wrap gap-2">
@@ -142,7 +156,7 @@ const AllProducts = () => {
         <div className="flex justify-center mt-6">
           <button
             onClick={Handleview}
-            className="bg-[#3973B7] hover:bg-gray-800 text-white px-6 py-2 rounded-full transition"
+            className="bg-black hover:bg-gray-800 text-white px-6 py-2 rounded-full transition"
           >
             View More
           </button>
@@ -158,29 +172,41 @@ const AllProducts = () => {
               <input
                 type="text"
                 value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
                 placeholder="Name"
                 className="border p-2 rounded"
               />
               <input
                 type="number"
                 value={formData.price}
-                onChange={(e) => setFormData({ ...formData, price: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, price: e.target.value })
+                }
                 placeholder="Price"
                 className="border p-2 rounded"
               />
               <input
                 type="number"
                 value={formData.rating}
-                onChange={(e) => setFormData({ ...formData, rating: e.target.value })}
+                onChange={(e) =>
+                  setFormData({ ...formData, rating: e.target.value })
+                }
                 placeholder="Rating"
                 className="border p-2 rounded"
               />
               <div className="flex justify-end gap-2">
-                <button onClick={() => setShowModal(false)} className="px-4 py-2 bg-gray-400 rounded">
+                <button
+                  onClick={() => setShowModal(false)}
+                  className="px-4 py-2 bg-gray-400 rounded"
+                >
                   Cancel
                 </button>
-                <button onClick={handleModalSubmit} className="px-4 py-2 bg-blue-600 text-white rounded">
+                <button
+                  onClick={handleModalSubmit}
+                  className="px-4 py-2 bg-blue-600 text-white rounded"
+                >
                   Save
                 </button>
               </div>

@@ -125,8 +125,8 @@ const ProductDetails = () => {
 
         {/* Details Section */}
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold text-gray-800">{product.name}</h1>
-          <p className="text-lg text-gray-600">{product.description}</p>
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-white">{product.name}</h1>
+          <p className="text-lg text-gray-600 dark:text-white">{product.description}</p>
 
           <div className="flex flex-wrap gap-4">
             <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm">
