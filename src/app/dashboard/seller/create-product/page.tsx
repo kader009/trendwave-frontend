@@ -1,5 +1,6 @@
 'use client';
 
+import { usePostProductMutation } from '@/redux/api/endApi';
 import {
   SetCategory,
   SetImageUrl,
@@ -8,6 +9,7 @@ import {
   SetProductName,
   SetRating,
   SetStock,
+  SetTotalSales
 } from '@/redux/features/productSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
@@ -16,13 +18,13 @@ import { toast } from 'sonner';
 
 type ProductFormValues = {
   name: string;
-  description: string;
+  productDescription: string;
   category: string;
   price: number;
   rating: number;
-  image: string;
-  stock: number;
+  imageUrl: string;
   totalSales: number;
+  stock: number;
 };
 
 const ProductForm = () => {
@@ -30,23 +32,58 @@ const ProductForm = () => {
     register,
     handleSubmit,
     formState: { errors },
-    reset,
   } = useForm<ProductFormValues>();
   const {
     category,
     imageUrl,
     price,
     productDescription,
-    productName,
+    name,
     rating,
     stock,
+    totalSales
   } = useAppSelector((state: RootState) => state.product);
   const dispatch = useAppDispatch();
+  const [postProduct] = usePostProductMutation();
 
-  const onSubmit = (data: ProductFormValues) => {
-    console.log(data);
-    toast.success('Product created successfully');
-    reset();
+  const onSubmit = async (data: ProductFormValues) => {
+    try {
+      const {
+        category,
+        imageUrl,
+        price,
+        productDescription,
+        name,
+        rating,
+        stock,
+        totalSales
+      } = data;
+
+      const postData = await postProduct({
+        category,
+        imageUrl,
+        price,
+        productDescription,
+        name,
+        rating,
+        stock,
+        totalSales
+      });
+      console.log(postData);
+      toast.success('product create successfully');
+
+      dispatch(SetCategory(''));
+      dispatch(SetImageUrl(''));
+      dispatch(SetPrice(''));
+      dispatch(SetproductDescription(''));
+      dispatch(SetProductName(''));
+      dispatch(SetRating(''));
+      dispatch(SetStock(''));
+      dispatch(SetTotalSales(''));
+    } catch (error) {
+      console.log(error);
+      toast.error('something went wrong');
+    }
   };
 
   return (
@@ -62,14 +99,18 @@ const ProductForm = () => {
             Name
           </label>
           <input
-            {...register('name', { required: 'Product name is required' })}
+            {...register('name', {
+              required: 'Product name is required',
+            })}
             className="w-full mt-1 p-2 border border-gray-300 rounded"
             placeholder="Product name"
-            value={productName}
+            value={name}
             onChange={(e) => dispatch(SetProductName(e.target.value))}
           />
           {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            <p className="text-red-500 text-sm mt-1">
+              {errors.name.message}
+            </p>
           )}
         </div>
 
@@ -79,7 +120,7 @@ const ProductForm = () => {
             Description
           </label>
           <textarea
-            {...register('description', {
+            {...register('productDescription', {
               required: 'Description is required',
             })}
             className="w-full mt-1 p-2 border border-gray-300 rounded"
@@ -87,9 +128,9 @@ const ProductForm = () => {
             value={productDescription}
             onChange={(e) => dispatch(SetproductDescription(e.target.value))}
           />
-          {errors.description && (
+          {errors.productDescription && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.description.message}
+              {errors.productDescription.message}
             </p>
           )}
         </div>
@@ -174,14 +215,16 @@ const ProductForm = () => {
             Image URL
           </label>
           <input
-            {...register('image', { required: 'Image URL is required' })}
+            {...register('imageUrl', { required: 'Image URL is required' })}
             className="w-full mt-1 p-2 border border-gray-300 rounded"
             placeholder="https://image-url.com"
             value={imageUrl}
             onChange={(e) => dispatch(SetImageUrl(e.target.value))}
           />
-          {errors.image && (
-            <p className="text-red-500 text-sm mt-1">{errors.image.message}</p>
+          {errors.imageUrl && (
+            <p className="text-red-500 text-sm mt-1">
+              {errors.imageUrl.message}
+            </p>
           )}
         </div>
 
@@ -204,6 +247,28 @@ const ProductForm = () => {
           />
           {errors.stock && (
             <p className="text-red-500 text-sm mt-1">{errors.stock.message}</p>
+          )}
+        </div>
+
+        {/* totalsale */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700">
+            TotalSale
+          </label>
+          <input
+            type="number"
+            {...register('totalSales', {
+              required: 'Stock is required',
+              valueAsNumber: true,
+              min: { value: 0, message: 'Stock must be 0 or more' },
+            })}
+            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            placeholder="200"
+            value={totalSales}
+            onChange={(e) => dispatch(SetTotalSales(e.target.value))}
+          />
+          {errors.totalSales && (
+            <p className="text-red-500 text-sm mt-1">{errors.totalSales.message}</p>
           )}
         </div>
 

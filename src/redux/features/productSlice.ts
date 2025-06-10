@@ -1,23 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Productprops {
-  productName: string;
+  name: string;
   productDescription: string;
   category: string;
   price: number | string;
   rating: number | string;
   imageUrl: string;
   stock: number | string;
+  totalSales: number | string;
 }
 
 const initialState: Productprops = {
-  productName: '',
+  name: '',
   productDescription: '',
   category: '',
   price: '',
   rating: '',
   imageUrl: '',
   stock: '',
+  totalSales: '',
 };
 
 const createProductSlice = createSlice({
@@ -25,7 +27,7 @@ const createProductSlice = createSlice({
   initialState,
   reducers: {
     SetProductName: (state, action: PayloadAction<string>) => {
-      state.productName = action.payload;
+      state.name = action.payload;
     },
 
     SetproductDescription: (state, action: PayloadAction<string>) => {
@@ -51,6 +53,10 @@ const createProductSlice = createSlice({
     SetStock: (state, action: PayloadAction<string>) => {
       state.stock = action.payload;
     },
+
+    SetTotalSales: (state, action: PayloadAction<string>) => {
+      state.totalSales = action.payload;
+    },
   },
 });
 
@@ -61,7 +67,8 @@ export const {
   SetRating,
   SetStock,
   SetproductDescription,
-  SetImageUrl
+  SetImageUrl,
+  SetTotalSales
 } = createProductSlice.actions;
 
 export default createProductSlice.reducer;

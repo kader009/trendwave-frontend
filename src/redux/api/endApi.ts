@@ -70,10 +70,10 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // post session route for tutor
-    postSession: build.mutation({
+    // post product route for seller
+    postProduct: build.mutation({
       query: (body) => ({
-        url: '/api/v1/session',
+        url: '/api/v1/products',
         method: 'POST',
         body,
       }),
@@ -210,7 +210,7 @@ export const {
   useAllProductsQuery,
   useDeleteProductMutation,
   useApproveSessionMutation,
-  usePostSessionMutation,
+  usePostProductMutation,
   useTutorSessionQuery,
   useTutorApprovedSessionQuery,
   useWishlistPostMutation,
