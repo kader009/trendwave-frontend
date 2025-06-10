@@ -9,7 +9,7 @@ import {
   SetProductName,
   SetRating,
   SetStock,
-  SetTotalSales
+  SetTotalSales,
 } from '@/redux/features/productSlice';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
@@ -18,7 +18,7 @@ import { toast } from 'sonner';
 
 type ProductFormValues = {
   name: string;
-  productDescription: string;
+  description: string;
   category: string;
   price: number;
   rating: number;
@@ -37,14 +37,15 @@ const ProductForm = () => {
     category,
     imageUrl,
     price,
-    productDescription,
+    description,
     name,
     rating,
     stock,
-    totalSales
+    totalSales,
   } = useAppSelector((state: RootState) => state.product);
   const dispatch = useAppDispatch();
   const [postProduct] = usePostProductMutation();
+  const { user } = useAppSelector((state: RootState) => state.user);
 
   const onSubmit = async (data: ProductFormValues) => {
     try {
@@ -52,22 +53,23 @@ const ProductForm = () => {
         category,
         imageUrl,
         price,
-        productDescription,
+        description,
         name,
         rating,
         stock,
-        totalSales
+        totalSales,
       } = data;
 
       const postData = await postProduct({
         category,
         imageUrl,
         price,
-        productDescription,
+        description,
         name,
         rating,
         stock,
-        totalSales
+        totalSales,
+        sellerEmail: user?.email,
       });
       console.log(postData);
       toast.success('product create successfully');
@@ -108,9 +110,7 @@ const ProductForm = () => {
             onChange={(e) => dispatch(SetProductName(e.target.value))}
           />
           {errors.name && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.name.message}
-            </p>
+            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
           )}
         </div>
 
@@ -120,17 +120,17 @@ const ProductForm = () => {
             Description
           </label>
           <textarea
-            {...register('productDescription', {
+            {...register('description', {
               required: 'Description is required',
             })}
             className="w-full mt-1 p-2 border border-gray-300 rounded"
             placeholder="Product description"
-            value={productDescription}
+            value={description}
             onChange={(e) => dispatch(SetproductDescription(e.target.value))}
           />
-          {errors.productDescription && (
+          {errors.description && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.productDescription.message}
+              {errors.description.message}
             </p>
           )}
         </div>
@@ -268,7 +268,9 @@ const ProductForm = () => {
             onChange={(e) => dispatch(SetTotalSales(e.target.value))}
           />
           {errors.totalSales && (
-            <p className="text-red-500 text-sm mt-1">{errors.totalSales.message}</p>
+            <p className="text-red-500 text-sm mt-1">
+              {errors.totalSales.message}
+            </p>
           )}
         </div>
 

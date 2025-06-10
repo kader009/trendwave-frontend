@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 interface Productprops {
   name: string;
-  productDescription: string;
+  description: string;
   category: string;
   price: number | string;
   rating: number | string;
@@ -13,7 +13,7 @@ interface Productprops {
 
 const initialState: Productprops = {
   name: '',
-  productDescription: '',
+  description: '',
   category: '',
   price: '',
   rating: '',
@@ -31,7 +31,7 @@ const createProductSlice = createSlice({
     },
 
     SetproductDescription: (state, action: PayloadAction<string>) => {
-      state.productDescription = action.payload;
+      state.description = action.payload;
     },
 
     SetCategory: (state, action: PayloadAction<string>) => {

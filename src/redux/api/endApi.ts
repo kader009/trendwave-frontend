@@ -103,10 +103,10 @@ const TrenwaveApi = baseApi.injectEndpoints({
       }),
     }),
 
-    // tutor session get with email query
-    tutorSession: build.query({
+    // seller products get with email query
+    sellerProduct: build.query({
       query: (email) => ({
-        url: `/api/v1/session/email/${email}`,
+        url: `/api/v1/proudcts/email/${email}`,
         method: 'GET',
       }),
     }),
@@ -211,7 +211,7 @@ export const {
   useDeleteProductMutation,
   useApproveSessionMutation,
   usePostProductMutation,
-  useTutorSessionQuery,
+  useSellerProductQuery,
   useTutorApprovedSessionQuery,
   useWishlistPostMutation,
   useGetWishlistByemailQuery,
