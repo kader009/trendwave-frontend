@@ -33,7 +33,7 @@ const TopProducts = async () => {
             </div>
 
             <Link href="/products">
-              <button className="bg-[#3973B7] text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
+              <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
                 View All <span className="ml-1">&rarr;</span>
               </button>
             </Link>
@@ -61,7 +61,7 @@ const TopProducts = async () => {
                   </div>
 
                   {/* Discount Badge */}
-                  <span className="absolute top-2 left-2 bg-[#3973B7] text-white text-xs px-2 py-[2px] rounded">
+                  <span className="absolute top-2 left-2 bg-black text-white text-xs px-2 py-[2px] rounded">
                     -{product.discount ?? 10}%
                   </span>
                 </div>
@@ -84,7 +84,7 @@ const TopProducts = async () => {
                   {/* Add Button */}
                   <div className="flex justify-end mt-2">
                     <Link href={`/products/${product._id}`}>
-                      <button className="bg-[#3973B7] text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
+                      <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
                         Detail <span className="ml-1">&rarr;</span>
                       </button>
                     </Link>

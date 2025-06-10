@@ -89,7 +89,7 @@ const ProductForm = () => {
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white shadow-md p-6 rounded-lg mt-10">
+    <div className="max-w-xl mx-auto bg-white shadow-md p-6 rounded-lg my-10">
       <h1 className="text-xl font-bold mb-6 text-gray-800">
         Create New Product
       </h1>

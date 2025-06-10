@@ -26,7 +26,7 @@ const SellerEarningsSummary = () => {
         <InfoCard title="Cancelled Orders" value={summary.cancelledOrders} />
         <InfoCard
           title="Avg. Order Value"
-          value={`৳ ${summary.avgOrderValue}`}
+          value={`$ ${summary.avgOrderValue}`}
         />
         <InfoCard title="Last Payout" value={summary.lastPayout} />
         <InfoCard title="Next Payout" value={summary.nextPayout} />

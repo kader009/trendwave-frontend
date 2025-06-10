@@ -80,9 +80,9 @@ const ViewProduct = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold text-slate-800 mb-6">
+      <h1 className="text-2xl font-bold text-slate-800 mb-6">
         Your Uploaded Products
-      </h2>
+      </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {products.map((product: Product) => (
           <div
@@ -123,13 +123,13 @@ const ViewProduct = () => {
                     setSelectedProduct(product);
                     setIsModalOpen(true);
                   }}
-                  className="text-blue-600 hover:text-blue-800"
+                  className="text-black hover:text-blue-800"
                 >
                   <Pencil size={18} />
                 </button>
                 <button
                   onClick={() => handleDelete(product._id)}
-                  className="text-red-600 hover:text-red-800"
+                  className="text-black hover:text-red-800"
                 >
                   <Trash2 size={18} />
                 </button>
