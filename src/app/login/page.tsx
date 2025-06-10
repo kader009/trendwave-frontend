@@ -41,7 +41,6 @@ export default function LoginPage() {
       if (userData?.data?.user && userData?.data?.token) {
         dispatch(setUser(userData.data));
         toast.success('Welcome to TrendWave');
-
         dispatch(SetEmail(''));
         dispatch(SetPassword(''));
         router.replace('/');
@@ -66,17 +65,19 @@ export default function LoginPage() {
 
   return (
     <Container>
-      <div className="min-h-screen flex flex-col md:flex-row">
+      <div className="min-h-screen flex flex-col md:flex-row items-center justify-center">
         {/* Left Side Image */}
-        <div className="w-full md:w-1/2 h-64 md:h-auto">
-          <Image
-            src="/login.svg"
-            width={500}
-            height={500}
-            alt="login Illustration"
-            className="w-full h-full object-cover"
-            priority
-          />
+        <div className="w-full md:w-1/2 flex items-center justify-center p-6 sm:p-8">
+          <div className="w-full max-w-md">
+            <Image
+              src="/login.svg"
+              width={500}
+              height={500}
+              alt="Login Illustration"
+              className="w-full h-auto object-contain"
+              priority
+            />
+          </div>
         </div>
 
         {/* Right Side Form */}
@@ -87,7 +88,7 @@ export default function LoginPage() {
           >
             <h1 className="text-3xl font-bold text-center">Login</h1>
 
-            {/* Email */}
+            {/* Email Field */}
             <div>
               <label className="block mb-1 font-medium">Email</label>
               <input
@@ -111,7 +112,7 @@ export default function LoginPage() {
               )}
             </div>
 
-            {/* Password */}
+            {/* Password Field */}
             <div>
               <label className="block mb-1 font-medium">Password</label>
               <input

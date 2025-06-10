@@ -50,7 +50,7 @@ const TopProducts = async () => {
                 <div className="relative group">
                   <div className="h-56 w-full rounded-md overflow-hidden bg-gray-100 relative">
                     <Image
-                      src={product.image}
+                      src={product?.image}
                       alt={product.name}
                       fill
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
