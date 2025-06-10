@@ -2,7 +2,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import Container from '@/components/ui/Container';
 import Spinner from '@/components/Sppiner';
 
 type Product = {
@@ -80,7 +79,7 @@ const ProductListing = () => {
   }, [filterProducts]);
 
   return (
-    <Container>
+    <div>
       <div className="flex flex-col lg:flex-row">
         {/* Sidebar Filters */}
         <aside className="w-full lg:w-1/4 bg-white shadow-md p-6 lg:sticky lg:top-0 lg:h-screen">
@@ -143,7 +142,7 @@ const ProductListing = () => {
         </aside>
 
         {/* Main Product Grid */}
-        <main className="w-full lg:w-3/4 p-6">
+        <main className="w-full p-6">
           {loading ? (
             <Spinner />
           ) : featuredProducts.length > 0 ? (
@@ -197,7 +196,7 @@ const ProductListing = () => {
           )}
         </main>
       </div>
-    </Container>
+    </div>
   );
 };
 

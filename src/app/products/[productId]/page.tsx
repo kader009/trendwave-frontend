@@ -159,7 +159,7 @@ const ProductDetails = () => {
             Buy Now
           </button>
           <button
-            className={`mt-6 px-8 py-3 text-white font-semibold rounded-full shadow-sm transition 
+            className={`mt-6 ms-2 px-8 py-3 text-white font-semibold rounded-full shadow-sm transition 
               ${
                 isDisabled
                   ? 'bg-gray-400 cursor-not-allowed ms-2'
