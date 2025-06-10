@@ -15,6 +15,7 @@ type Slide = {
   image: string;
   title: string;
   subtitle: string;
+  button:string
 };
 
 const slides: Slide[] = [
@@ -23,18 +24,21 @@ const slides: Slide[] = [
     image: '/slide1.webp',
     title: 'Welcome to TrendWave',
     subtitle: 'Find the best deals on your favorite products.',
+    button: 'Search Now'
   },
   {
     id: 2,
     image: '/slide2.webp',
     title: 'Shop the Latest Trends',
     subtitle: 'Fashion, electronics, and more — all in one place!',
+    button: 'Buy Now'
   },
   {
     id: 3,
     image: '/slide3.webp',
     title: 'Fast Delivery & Great Support',
     subtitle: 'We deliver happiness right to your door.',
+    button: 'Grab Now'
   },
 ];
 
@@ -81,10 +85,11 @@ export default function Header() {
                 priority
               />
               <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center text-center text-white px-4">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4">
+                <h1 className="text-3xl md:text-5xl font-bold mb-4">
                   {slide.title}
-                </h2>
+                </h1>
                 <p className="text-base md:text-xl">{slide.subtitle}</p>
+                <button className='bg-black/60 text-white px-4 py-2 rounded-full mt-4 cursor-pointer'>{slide.button}</button>
               </div>
             </div>
           </SwiperSlide>

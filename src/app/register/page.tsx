@@ -157,7 +157,7 @@ export default function RegisterPage() {
               <label className="block mb-1 font-medium">Select Role</label>
               <select
                 {...register('role', { required: 'Role is required' })}
-                className="w-full px-4 py-2 border rounded"
+                className="w-full px-4 py-2 border rounded dark:bg-gray-900"
                 value={role}
                 onChange={(e) => dispatch(SetRole(e.target.value))}
               >
@@ -176,7 +176,7 @@ export default function RegisterPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-black text-white py-2 rounded hover:bg-gray-700 transition"
+              className="w-full dark:bg-gray-600 bg-black text-white py-2 rounded hover:bg-gray-700 transition"
             >
               Register
             </button>

@@ -89,7 +89,7 @@ const Navbar = () => {
 
                   <button
                     onClick={handleLogout}
-                    className="hover:text-slate-300 transition-colors"
+                    className="hover:text-slate-300 transition-colors cursor-pointer"
                   >
                     Logout
                   </button>
@@ -131,7 +131,7 @@ const Navbar = () => {
         }`}
       >
         <div className="p-4 border-b flex justify-between items-center">
-          <span className="text-xl font-bold text-slate-800">Menu</span>
+          <span className="text-xl font-bold text-slate-800">TrendWave</span>
           <button onClick={handleDrawerToggle} aria-label="Close menu">
             ✕
           </button>

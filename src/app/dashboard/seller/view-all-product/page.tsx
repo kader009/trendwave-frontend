@@ -80,7 +80,7 @@ const ViewProduct = () => {
 
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-slate-800 mb-6">
+      <h1 className="text-2xl font-bold text-slate-800 mb-6 dark:text-white">
         Your Uploaded Products
       </h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
@@ -143,7 +143,7 @@ const ViewProduct = () => {
       {isModalOpen && selectedProduct && (
         <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
           <div className="bg-white p-6 rounded-xl w-[90%] max-w-md relative">
-            <h3 className="text-xl font-semibold mb-4">Update Product</h3>
+            <h2 className="text-xl font-semibold mb-4 dark:text-black">Update Product</h2>
             <form onSubmit={handleUpdate} className="space-y-4">
               <input
                 type="text"
@@ -154,7 +154,7 @@ const ViewProduct = () => {
                     name: e.target.value,
                   })
                 }
-                className="w-full border px-3 py-2 rounded-md"
+                className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Product Name"
               />
               <input
@@ -166,7 +166,7 @@ const ViewProduct = () => {
                     price: +e.target.value,
                   })
                 }
-                className="w-full border px-3 py-2 rounded-md"
+                className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Price"
               />
               <textarea
@@ -177,7 +177,7 @@ const ViewProduct = () => {
                     description: e.target.value,
                   })
                 }
-                className="w-full border px-3 py-2 rounded-md"
+                className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Description"
               />
               <div className="flex justify-end gap-3">

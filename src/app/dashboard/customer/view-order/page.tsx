@@ -53,7 +53,7 @@ const ViewOrder = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <h1 className="text-2xl md:text-3xl font-bold mb-10 text-center text-slate-800">
+      <h1 className="text-2xl md:text-3xl font-bold mb-10 text-center text-slate-800 dark:text-white">
         Your Orders
       </h1>
 

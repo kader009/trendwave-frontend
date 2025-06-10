@@ -104,7 +104,7 @@ const ProductForm = () => {
             {...register('name', {
               required: 'Product name is required',
             })}
-            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="Product name"
             value={name}
             onChange={(e) => dispatch(SetProductName(e.target.value))}
@@ -123,7 +123,7 @@ const ProductForm = () => {
             {...register('description', {
               required: 'Description is required',
             })}
-            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="Product description"
             value={description}
             onChange={(e) => dispatch(SetproductDescription(e.target.value))}
@@ -142,7 +142,7 @@ const ProductForm = () => {
           </label>
           <select
             {...register('category', { required: 'Category is required' })}
-            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             value={category}
             onChange={(e) => dispatch(SetCategory(e.target.value))}
           >
@@ -175,7 +175,7 @@ const ProductForm = () => {
               valueAsNumber: true,
               min: { value: 0, message: 'Price must be positive' },
             })}
-            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="60"
             value={price}
             onChange={(e) => dispatch(SetPrice(e.target.value))}
@@ -199,7 +199,7 @@ const ProductForm = () => {
               min: { value: 1, message: 'Minimum rating is 1' },
               max: { value: 5, message: 'Maximum rating is 5' },
             })}
-            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="4.3"
             value={rating}
             onChange={(e) => dispatch(SetRating(e.target.value))}
@@ -216,7 +216,7 @@ const ProductForm = () => {
           </label>
           <input
             {...register('imageUrl', { required: 'Image URL is required' })}
-            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="https://image-url.com"
             value={imageUrl}
             onChange={(e) => dispatch(SetImageUrl(e.target.value))}
@@ -240,7 +240,7 @@ const ProductForm = () => {
               valueAsNumber: true,
               min: { value: 0, message: 'Stock must be 0 or more' },
             })}
-            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="200"
             value={stock}
             onChange={(e) => dispatch(SetStock(e.target.value))}
@@ -262,7 +262,7 @@ const ProductForm = () => {
               valueAsNumber: true,
               min: { value: 0, message: 'Stock must be 0 or more' },
             })}
-            className="w-full mt-1 p-2 border border-gray-300 rounded"
+            className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="200"
             value={totalSales}
             onChange={(e) => dispatch(SetTotalSales(e.target.value))}

@@ -139,7 +139,7 @@ export default function LoginPage() {
             {/* Submit Button */}
             <button
               type="submit"
-              className="w-full bg-black text-white py-2 rounded hover:bg-gray-700 transition"
+              className="w-full dark:bg-gray-600 bg-black text-white py-2 rounded hover:bg-gray-700 transition"
             >
               Login
             </button>
