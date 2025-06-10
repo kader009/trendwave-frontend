@@ -45,8 +45,8 @@ const links = [
     roles: ['seller'],
   },
   {
-    href: '/dashboard/seller/view-order',
-    label: 'View Order',
+    href: '/dashboard/seller/summary',
+    label: 'Summary',
     roles: ['seller'],
   },
 ];
