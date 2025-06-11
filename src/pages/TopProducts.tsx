@@ -13,11 +13,14 @@ interface Product {
 }
 
 const TopProducts = async () => {
-  const response = await fetch(`https://trendwave-backend.onrender.com/api/v1/popular`, {
-    next: {
-      revalidate: 30,
-    },
-  });
+  const response = await fetch(
+    `https://trendwave-backend.onrender.com/api/v1/popular`,
+    {
+      next: {
+        revalidate: 30,
+      },
+    }
+  );
   const popular = await response.json();
 
   return (
@@ -25,10 +28,10 @@ const TopProducts = async () => {
       <Container>
         <div className="px-4 md:px-6 py-4">
           {/* Title & View All Button */}
-          <div className="flex items-center justify-between mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
               <h1 className="text-xl md:text-2xl font-bold">
-                Most Popular Products
+                Popular Products
               </h1>
             </div>
 
@@ -40,7 +43,7 @@ const TopProducts = async () => {
           </div>
 
           {/* Product Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {popular?.PopularProduct?.map((product: Product, index: number) => (
               <div
                 key={index}
