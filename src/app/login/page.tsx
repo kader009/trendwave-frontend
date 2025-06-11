@@ -144,6 +144,17 @@ export default function LoginPage() {
               Login
             </button>
 
+            {/* 🔒 Demo account info */}
+            <div className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-100 rounded p-3 text-sm">
+              <p className="font-semibold mb-1">Demo Account:</p>
+              <p>
+                <span className="font-medium">Email:</span> martin@gmail.com
+              </p>
+              <p>
+                <span className="font-medium">Password:</span> 12345678
+              </p>
+            </div>
+
             {/* Register Link */}
             <p className="text-center text-sm">
               New to here?{' '}
