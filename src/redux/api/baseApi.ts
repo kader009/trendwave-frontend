@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 export const baseApi = createApi({
   reducerPath: 'TrendwaveApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'http://localhost:5000',
+    baseUrl: 'https://trendwave-backend.onrender.com',
     // prepareHeaders: (headers, { getState }) => {
       
     //   const token = (getState() as { user: { token: string } }).user.token;

@@ -13,7 +13,7 @@ interface Product {
 }
 
 const TopProducts = async () => {
-  const response = await fetch(`http://localhost:5000/api/v1/popular`, {
+  const response = await fetch(`https://trendwave-backend.onrender.com/api/v1/popular`, {
     next: {
       revalidate: 30,
     },

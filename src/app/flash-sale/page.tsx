@@ -13,7 +13,7 @@ interface Product {
 }
 
 const FlashSalePage = async () => {
-  const response = await fetch(`http://localhost:5000/api/v1/flash-sale`, {
+  const response = await fetch(`https://trendwave-backend.onrender.com/api/v1/flash-sale`, {
     next: {
       revalidate: 30,
     },

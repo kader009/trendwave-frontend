@@ -36,7 +36,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const res = await fetch(
-          `http://localhost:5000/api/v1/products/${productId}`
+          `https://trendwave-backend.onrender.com/api/v1/products/${productId}`
         );
         if (!res.ok) throw new Error('Failed to fetch product');
         const json = await res.json();
