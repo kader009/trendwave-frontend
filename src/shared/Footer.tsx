@@ -52,7 +52,7 @@ const Footer = () => {
             <ul className="space-y-2 text-sm text-white">
               <li>
                 <Link
-                  href="/about"
+                  href="/about-us"
                   className="hover:text-white transition-colors hover:underline"
                 >
                   About Us
