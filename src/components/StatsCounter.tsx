@@ -21,9 +21,9 @@ const StatsCounter = () => {
         </div>
 
         <div>
-          <h2 className="text-4xl font-bold text-black dark:text-white">
+          <h3 className="text-4xl font-bold text-black dark:text-white">
             <CountUp end={99.9} duration={3} suffix="%" decimals={1} />
-          </h2>
+          </h3>
           <p className="mt-2 text-lg text-black dark:text-white">Positive Reviews</p>
         </div>
       </div>

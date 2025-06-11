@@ -27,10 +27,10 @@ const ProductDetails = () => {
   const productId = params?.productId as string;
   const [product, setProduct] = useState<ProductData | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-  const { user } = useAppSelector((state: RootState) => state.user);
+  const { user } = useAppSelector((state: RootState) => state.user); 
   const [bookorder] = useBookOrderMutation();
   const [addWishList, { isLoading }] = useWishlistPostMutation();
-  const isDisabled = ['admin', 'seller'].includes(user?.role || '');
+  const isDisabled = !user || ['admin', 'seller'].includes(user?.role || null || ''); 
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -100,6 +100,7 @@ const ProductDetails = () => {
         image: product?.image,
         customerEmail: user?.email,
       };
+
       const postData = await addWishList(payload);
       console.log(postData);
       toast.success('product added to wishlist successfully');
