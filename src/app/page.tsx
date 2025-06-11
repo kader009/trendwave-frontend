@@ -1,4 +1,5 @@
 import BrandMarquee from "@/components/BrandPromotion";
+import StatsCounter from "@/components/StatsCounter";
 import Category from "@/pages/Category";
 import FlashSale from "@/pages/FlashSale";
 import Header from "@/pages/Header";
@@ -11,5 +12,6 @@ export default function Home() {
     <Category/>
     <TopProducts/>
     <BrandMarquee/>
+    <StatsCounter/>
   </div>;
 }

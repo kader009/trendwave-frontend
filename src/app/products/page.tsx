@@ -177,7 +177,7 @@ const ProductListing = () => {
                     <div className="flex items-center justify-between mt-1">
                       <span className="text-sm font-bold dark:text-black">${product.price}</span>
                       <div className="text-yellow-500 text-sm">
-                        {product.rating}{'★'.repeat(Math.floor(product.rating))}
+                        {product.rating} {'★'.repeat(Math.floor(product.rating))}
                       </div>
                     </div>
                     <div className="flex justify-end mt-2">
@@ -192,7 +192,7 @@ const ProductListing = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500">No products match your filters.</p>
+            <p className="text-gray-500 text-center">No products match your filters.</p>
           )}
         </main>
       </div>
