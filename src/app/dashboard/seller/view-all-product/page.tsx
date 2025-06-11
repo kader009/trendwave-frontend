@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   useDeleteProductMutation,
   useSellerProductQuery,
@@ -9,14 +9,14 @@ import {
 } from '@/redux/api/endApi';
 import { useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
-import { Star, Pencil, Trash2 } from 'lucide-react';
+import { Star, Pencil, Trash2, X } from 'lucide-react';
 import { toast } from 'sonner';
 import Spinner from '@/components/Sppiner';
 
 interface Product {
   _id: string;
   category: string;
-  imageUrl: string;
+  image: string;
   price: number;
   description: string;
   name: string;
@@ -34,8 +34,10 @@ const ViewProduct = () => {
     isError,
     refetch,
   } = useSellerProductQuery(user?.email, { pollingInterval: 2000 });
+
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const [updateProduct] = useUpdateProductMutation();
   const [deleteProduct] = useDeleteProductMutation();
 
@@ -56,7 +58,7 @@ const ViewProduct = () => {
 
     try {
       const { _id, ...updatedData } = selectedProduct;
-      await updateProduct({ id: _id, body: updatedData });
+      await updateProduct({ id: _id, body: updatedData }).unwrap();
       toast.success('Product updated successfully');
       setIsModalOpen(false);
       refetch();
@@ -66,9 +68,25 @@ const ViewProduct = () => {
     }
   };
 
-  if (isLoading) {
-    return <Spinner />;
-  }
+  const handleBackdropClick = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleModalClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
+  useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsModalOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, []);
+
+  if (isLoading) return <Spinner />;
 
   if (isError || !products?.length) {
     return (
@@ -91,7 +109,7 @@ const ViewProduct = () => {
           >
             <div className="relative w-full h-52">
               <Image
-                src={product.imageUrl}
+                src={product.image}
                 alt={product.name}
                 fill
                 className="object-cover"
@@ -99,9 +117,9 @@ const ViewProduct = () => {
               />
             </div>
             <div className="p-4 space-y-2">
-              <h3 className="text-lg font-semibold text-gray-800">
+              <h2 className="text-lg font-semibold text-gray-800">
                 {product.name}
-              </h3>
+              </h2>
               <p className="text-sm text-gray-500">{product.category}</p>
               <p className="text-gray-600 text-sm">
                 {product.description.slice(0, 80)}...
@@ -120,7 +138,7 @@ const ViewProduct = () => {
               <div className="flex justify-end gap-2 mt-2">
                 <button
                   onClick={() => {
-                    setSelectedProduct(product);
+                    setSelectedProduct({ ...product });
                     setIsModalOpen(true);
                   }}
                   className="text-black hover:text-blue-800"
@@ -141,18 +159,29 @@ const ViewProduct = () => {
 
       {/* Modal */}
       {isModalOpen && selectedProduct && (
-        <div className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-xl w-[90%] max-w-md relative">
-            <h2 className="text-xl font-semibold mb-4 dark:text-black">Update Product</h2>
+        <div
+          className="fixed inset-0 bg-black bg-opacity-40 flex items-center justify-center z-50"
+          onClick={handleBackdropClick}
+        >
+          <div
+            className="bg-white p-6 rounded-xl w-[90%] max-w-md relative"
+            onClick={handleModalClick}
+          >
+            <button
+              className="absolute top-2 right-2 text-gray-600 hover:text-red-600"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <X size={20} />
+            </button>
+            <h2 className="text-xl font-semibold mb-4 dark:text-black">
+              Update Product
+            </h2>
             <form onSubmit={handleUpdate} className="space-y-4">
               <input
                 type="text"
                 value={selectedProduct.name}
                 onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    name: e.target.value,
-                  })
+                  setSelectedProduct({ ...selectedProduct, name: e.target.value })
                 }
                 className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Product Name"
@@ -161,10 +190,7 @@ const ViewProduct = () => {
                 type="number"
                 value={selectedProduct.price}
                 onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    price: +e.target.value,
-                  })
+                  setSelectedProduct({ ...selectedProduct, price: +e.target.value })
                 }
                 className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Price"
@@ -172,10 +198,7 @@ const ViewProduct = () => {
               <textarea
                 value={selectedProduct.description}
                 onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    description: e.target.value,
-                  })
+                  setSelectedProduct({ ...selectedProduct, description: e.target.value })
                 }
                 className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Description"
