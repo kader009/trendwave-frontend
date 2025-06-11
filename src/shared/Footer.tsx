@@ -53,23 +53,32 @@ const Footer = () => {
               <li>
                 <Link
                   href="/about"
-                  className="hover:text-white transition-colors"
+                  className="hover:text-white transition-colors hover:underline"
                 >
                   About Us
                 </Link>
               </li>
               <li>
-                <Link href="/" className="hover:text-white transition-colors">
+                <Link
+                  href="/"
+                  className="hover:text-white transition-colors hover:underline"
+                >
                   Become a Vendor
                 </Link>
               </li>
               <li>
-                <Link href="/" className="hover:text-white transition-colors">
+                <Link
+                  href="/"
+                  className="hover:text-white transition-colors hover:underline"
+                >
                   Returns & Refunds
                 </Link>
               </li>
               <li>
-                <Link href="/" className="hover:text-white transition-colors">
+                <Link
+                  href="/"
+                  className="hover:text-white transition-colors hover:underline"
+                >
                   Terms of Service
                 </Link>
               </li>
@@ -160,11 +169,17 @@ const Footer = () => {
           {/* Added relative z-10 */}
           <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-white">
             <p>© {new Date().getFullYear()} TrendWave. All rights reserved.</p>
-            <div className="flex items-center gap-4 mt-4 md:mt-0">
-              <Link href="/" className="hover:text-white transition-colors">
+            <div className="flex items-center gap-4 mt-4 md:mt-0 ">
+              <Link
+                href="/"
+                className="hover:text-white transition-colors hover:underline"
+              >
                 Privacy Policy
               </Link>
-              <Link href="/" className="hover:text-white transition-colors">
+              <Link
+                href="/"
+                className="hover:text-white transition-colors hover:underline"
+              >
                 Terms of Service
               </Link>
             </div>

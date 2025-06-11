@@ -89,7 +89,7 @@ export default function Header() {
                   {slide.title}
                 </h1>
                 <p className="text-base md:text-xl">{slide.subtitle}</p>
-                <button className='bg-black/60 text-white px-5 py-2 rounded-full mt-4 cursor-pointer'>{slide.button}</button>
+                <button className='bg-black/60 hover:bg-gray-950 text-white px-5 py-2 rounded-full mt-4 cursor-pointer'>{slide.button}</button>
               </div>
             </div>
           </SwiperSlide>

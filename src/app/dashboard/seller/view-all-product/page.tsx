@@ -181,7 +181,10 @@ const ViewProduct = () => {
                 type="text"
                 value={selectedProduct.name}
                 onChange={(e) =>
-                  setSelectedProduct({ ...selectedProduct, name: e.target.value })
+                  setSelectedProduct({
+                    ...selectedProduct,
+                    name: e.target.value,
+                  })
                 }
                 className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Product Name"
@@ -190,7 +193,10 @@ const ViewProduct = () => {
                 type="number"
                 value={selectedProduct.price}
                 onChange={(e) =>
-                  setSelectedProduct({ ...selectedProduct, price: +e.target.value })
+                  setSelectedProduct({
+                    ...selectedProduct,
+                    price: +e.target.value,
+                  })
                 }
                 className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Price"
@@ -198,7 +204,10 @@ const ViewProduct = () => {
               <textarea
                 value={selectedProduct.description}
                 onChange={(e) =>
-                  setSelectedProduct({ ...selectedProduct, description: e.target.value })
+                  setSelectedProduct({
+                    ...selectedProduct,
+                    description: e.target.value,
+                  })
                 }
                 className="w-full border px-3 py-2 rounded-md dark:text-black"
                 placeholder="Description"
