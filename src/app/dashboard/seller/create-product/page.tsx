@@ -22,7 +22,7 @@ type ProductFormValues = {
   category: string;
   price: number;
   rating: number;
-  imageUrl: string;
+  image: string;
   totalSales: number;
   stock: number;
 };
@@ -35,7 +35,7 @@ const ProductForm = () => {
   } = useForm<ProductFormValues>();
   const {
     category,
-    imageUrl,
+    image,
     price,
     description,
     name,
@@ -51,7 +51,7 @@ const ProductForm = () => {
     try {
       const {
         category,
-        imageUrl,
+        image,
         price,
         description,
         name,
@@ -62,7 +62,7 @@ const ProductForm = () => {
 
       const postData = await postProduct({
         category,
-        imageUrl,
+        image,
         price,
         description,
         name,
@@ -215,15 +215,15 @@ const ProductForm = () => {
             Image URL
           </label>
           <input
-            {...register('imageUrl', { required: 'Image URL is required' })}
+            {...register('image', { required: 'Image URL is required' })}
             className="w-full mt-1 p-2 border border-gray-300 rounded dark:text-black"
             placeholder="https://image-url.com"
-            value={imageUrl}
+            value={image}
             onChange={(e) => dispatch(SetImageUrl(e.target.value))}
           />
-          {errors.imageUrl && (
+          {errors.image && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.imageUrl.message}
+              {errors.image.message}
             </p>
           )}
         </div>

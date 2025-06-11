@@ -6,7 +6,7 @@ interface Productprops {
   category: string;
   price: number | string;
   rating: number | string;
-  imageUrl: string;
+  image: string;
   stock: number | string;
   totalSales: number | string;
 }
@@ -17,7 +17,7 @@ const initialState: Productprops = {
   category: '',
   price: '',
   rating: '',
-  imageUrl: '',
+  image: '',
   stock: '',
   totalSales: '',
 };
@@ -47,7 +47,7 @@ const createProductSlice = createSlice({
     },
 
     SetImageUrl: (state, action: PayloadAction<string>) => {
-      state.imageUrl = action.payload;
+      state.image = action.payload;
     },
 
     SetStock: (state, action: PayloadAction<string>) => {
