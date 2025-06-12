@@ -61,7 +61,7 @@ export default function Header() {
   };
 
   return (
-    <div className="relative w-full h-[91vh]">
+    <div className="relative w-full h-[91.7vh]">
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
