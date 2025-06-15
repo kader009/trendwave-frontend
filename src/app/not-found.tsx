@@ -1,6 +1,4 @@
-// app/not-found.tsx OR pages/404.tsx
-
-'use client'; // If you're using App Router
+'use client';
 
 import Link from 'next/link';
 
