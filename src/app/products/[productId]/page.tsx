@@ -30,7 +30,7 @@ const ProductDetails = () => {
   const { user } = useAppSelector((state: RootState) => state.user); 
   const [bookorder] = useBookOrderMutation();
   const [addWishList, { isLoading }] = useWishlistPostMutation();
-  const isDisabled = !user || ['admin', 'seller'].includes(user?.role || null || ''); 
+  const isDisabled = !user || ['admin', 'seller'].includes(user?.role || null || '');
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -38,7 +38,7 @@ const ProductDetails = () => {
         const res = await fetch(
           `https://trendwave-backend.onrender.com/api/v1/products/${productId}`
         );
-        if (!res.ok) throw new Error('Failed to fetch product');
+        if (!res.ok) throw new Error('Failed to fetch product'); 
         const json = await res.json();
         setProduct(json?.Productdata);
         setLoading(false);
@@ -83,6 +83,14 @@ const ProductDetails = () => {
       const postData = await bookorder(payload);
       console.log(postData);
       toast.success('order place successfully');
+
+      // refetch data for update stock and sales
+    const res = await fetch(
+      `https://trendwave-backend.onrender.com/api/v1/products/${productId}`
+    );
+    const json = await res.json();
+    setProduct(json?.Productdata);
+    
     } catch (error) {
       console.log('data posting error', error);
       toast.error('something went wrong');
