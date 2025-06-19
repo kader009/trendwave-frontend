@@ -69,7 +69,7 @@ export default function Header() {
           spaceBetween={0}
           centeredSlides={true}
           autoplay={{
-            delay: 7000,
+            delay: 8000,
             disableOnInteraction: false,
           }}
           pagination={{ clickable: true }}
