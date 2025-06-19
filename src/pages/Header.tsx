@@ -1,6 +1,5 @@
-'use client';
-
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Header() {
   return (
@@ -23,7 +22,7 @@ export default function Header() {
             We deliver happiness right to your door.
           </p>
           <button className="bg-black/60 hover:bg-gray-950 text-white px-5 py-2 rounded-full mt-4 cursor-pointer">
-            Grab Now
+            <Link href="/products">Grab Now</Link>
           </button>
         </div>
       </div>
