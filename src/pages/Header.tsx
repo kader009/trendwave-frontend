@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <div className="relative w-full h-[60vh] md:h-[91vh] overflow-hidden">
+    <div className="relative w-full h-[60vh] md:h-[85vh] overflow-hidden">
       <div className="relative w-full h-full">
         <Image
           src="/slide3.webp"
