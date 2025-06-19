@@ -1,4 +1,5 @@
 import BrandMarquee from "@/components/BrandPromotion";
+import Testimonial from "@/components/Testimonial";
 import Category from "@/pages/Category";
 import FlashSale from "@/pages/FlashSale";
 import Header from "@/pages/Header";
@@ -10,6 +11,8 @@ export default function Home() {
     <FlashSale/>
     <Category/>
     <TopProducts/>
+    <Testimonial/>
     <BrandMarquee/>
+    
   </div>;
 }
