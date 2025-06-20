@@ -12,7 +12,7 @@ export default function Header() {
         </p>
         <Link
           href="/products"
-          className="inline-block bg-black text-white hover:bg-gray-100 px-6 py-2 rounded-full font-bold text-lg shadow-md transition-all duration-300"
+          className="inline-block bg-black text-white hover:bg-gray-600 px-6 py-2 rounded-full font-bold text-lg shadow-md transition-all duration-300"
         >
           Shop Now
         </Link>
