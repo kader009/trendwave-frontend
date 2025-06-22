@@ -2,8 +2,9 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
-    <header className="relative w-full h-screen bg-[#1E293B] text-white overflow-hidden flex items-center justify-center px-4 sm:px-6 md:px-8">
-      <div className="max-w-3xl text-center">
+    <header className="relative w-full h-screen bg-[#a98df3] text-white overflow-hidden flex items-center justify-center px-4 sm:px-6 md:px-8">
+      {/* Content */}
+      <div className="text-center max-w-3xl">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight drop-shadow-lg mb-6">
           Discover Style <br /> That Speaks for You
         </h1>
