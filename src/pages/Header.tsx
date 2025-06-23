@@ -5,7 +5,7 @@ export default function Header() {
     <header className="relative w-full h-screen bg-[#a98df3] text-white overflow-hidden flex items-center justify-center px-4 sm:px-6 md:px-8">
       {/* Content */}
       <div className="text-center max-w-3xl">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight drop-shadow-lg mb-6">
+        <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-6xl font-extrabold leading-tight drop-shadow-lg mb-6">
           Discover Style <br /> That Speaks for You
         </h1>
         <p className="text-base sm:text-lg md:text-xl mb-6 drop-shadow-sm">
