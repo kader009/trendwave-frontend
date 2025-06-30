@@ -56,24 +56,24 @@ const Navbar = () => {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex space-x-6 items-center">
-              <Link href="/" className="hover:text-slate-300 transition-colors">
+              <Link href="/" className="hover:text-slate-300 transition-colors cursor-pointer">
                 Home
               </Link>
               <Link
                 href="/about-us"
-                className="hover:text-slate-300 transition-colors"
+                className="hover:text-slate-300 transition-colors cursor-pointer"
               >
                 About us
               </Link>
               <Link
                 href="/products"
-                className="hover:text-slate-300 transition-colors"
+                className="hover:text-slate-300 transition-colors cursor-pointer"
               >
                 Products
               </Link>
               <Link
                 href="/flash-sale"
-                className="hover:text-slate-300 transition-colors"
+                className="hover:text-slate-300 transition-colors cursor-pointer"
               >
                 Flash Sale
               </Link>
@@ -82,7 +82,7 @@ const Navbar = () => {
                 <>
                   <Link
                     href="/dashboard"
-                    className="hover:text-slate-300 transition-colors"
+                    className="hover:text-slate-300 transition-colors cursor-pointer"
                   >
                     Dashboard
                   </Link>
@@ -107,7 +107,7 @@ const Navbar = () => {
               ) : (
                 <Link
                   href="/login"
-                  className="hover:text-slate-300 transition-colors"
+                  className="hover:text-slate-300 transition-colors cursor-pointer"
                 >
                   Login
                 </Link>
