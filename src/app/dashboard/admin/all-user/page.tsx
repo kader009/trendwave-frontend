@@ -67,16 +67,18 @@ const AllUser = () => {
                     />
                   </div>
                 </td>
-                <td className="px-4 py-3 font-medium text-gray-900">{u.name}</td>
+                <td className="px-4 py-3 font-medium text-gray-900">
+                  {u.name}
+                </td>
                 <td className="px-4 py-3 text-gray-700">{u.email}</td>
                 <td className="px-4 py-3">
-                  <span className="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-3 py-1 rounded-full capitalize whitespace-nowrap">
+                  <span className="inline-block bg-blue-100 text-black text-xs font-semibold px-3 py-1 rounded-full capitalize whitespace-nowrap">
                     {u.role}
                   </span>
                 </td>
                 <td className="px-4 py-3">
                   <button
-                    className="text-sm bg-black text-white px-4 py-1 rounded hover:bg-gray-700 transition whitespace-nowrap"
+                    className="text-sm bg-black text-white px-4 py-1 rounded hover:bg-gray-700 transition whitespace-nowrap cursor-pointer"
                     onClick={() => handleRoleUpdate(u._id)}
                   >
                     Change Role

@@ -120,8 +120,12 @@ const AllProducts = () => {
               <td className="px-4 py-3 font-medium text-gray-800">
                 {product.name}
               </td>
-              <td className="px-4 py-3 font-medium dark:text-black">${product.price}</td>
-              <td className="px-4 py-3 font-medium dark:text-black">{product.totalSales}</td>
+              <td className="px-4 py-3 font-medium dark:text-black">
+                ${product.price}
+              </td>
+              <td className="px-4 py-3 font-medium dark:text-black">
+                {product.totalSales}
+              </td>
               <td className="px-4 py-3 flex items-center gap-1 dark:text-black">
                 {product.rating}
                 <Star
@@ -135,13 +139,13 @@ const AllProducts = () => {
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={() => handleUpdate(product)}
-                    className="bg-black hover:bg-gray-700 text-white px-3 py-1 rounded text-sm"
+                    className="bg-black hover:bg-gray-700 text-white px-3 py-1 rounded text-sm cursor-pointer"
                   >
                     Update
                   </button>
                   <button
                     onClick={() => handleDelete(product._id)}
-                    className="bg-black hover:bg-gray-700 text-white px-3 py-1 rounded text-sm"
+                    className="bg-black hover:bg-gray-700 text-white px-3 py-1 rounded text-sm cursor-pointer"
                   >
                     Delete
                   </button>
