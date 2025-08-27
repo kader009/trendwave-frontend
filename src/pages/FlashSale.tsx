@@ -26,7 +26,7 @@ const FlashSale = async () => {
         <div className="px-4 md:px-6 py-4">
           {/* Title & View All Button */}
           <div className="flex items-center justify-between mb-6">
-            <h1 className="text-xl md:text-2xl font-bold">Flash Sale</h1>
+            <h1 className="text-3xl font-bold">Flash Sale</h1>
             <Link href="/flash-sale">
               <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer dark:bg-gray-600">
                 View All <span className="ml-1">&rarr;</span>

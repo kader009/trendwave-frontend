@@ -46,7 +46,7 @@ export default function Testimonial() {
   return (
     <section className="bg-white dark:bg-gray-900 py-10 px-4">
       <div className="max-w-[88rem] mx-auto text-center relative">
-        <h1 className="text-xl font-bold mb-10 dark:text-white">Customer Testimonials</h1>
+        <h1 className="text-3xl font-bold mb-10 dark:text-white">Customer Testimonials</h1>
 
         <div className="relative bg-white dark:bg-gray-800 p-8 rounded shadow-md min-h-[320px]">
           {/* Left Arrow */}

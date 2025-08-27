@@ -30,7 +30,7 @@ const TopProducts = async () => {
           {/* Title & View All Button */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-6">
             <div>
-              <h1 className="text-xl md:text-2xl font-bold">
+              <h1 className="text-3xl font-bold">
                 Popular Products
               </h1>
             </div>

@@ -19,7 +19,7 @@ const Category = async () => {
     <div className="mt-20 mx-6">
       <Container>
         <div className="text-center">
-          <h1 className="text-3xl md:text-4xl font-bold text-gray-800 dark:text-white">
+          <h1 className="text-3xl font-bold text-gray-800 dark:text-white">
             Top Categories
           </h1>
           <p className="mt-2 text-gray-600 max-w-xl mx-auto dark:text-white">
