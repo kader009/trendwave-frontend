@@ -27,6 +27,10 @@ const ProductListing = () => {
   const [priceRange, setPriceRange] = useState([0, 100]);
   const [loading, setLoading] = useState(true);
 
+  // Pagination states
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 12;
+
   useEffect(() => {
     fetch('https://trendwave-backend.onrender.com/api/v1/products')
       .then((res) => res.json())
@@ -36,9 +40,7 @@ const ProductListing = () => {
         setLoading(false);
         const uniqueCategories = [...new Set(data.map((p) => p.category))];
         setCategories(uniqueCategories);
-        const uniqueRatings = [
-          ...new Set(data.map((p) => Math.floor(p.rating))),
-        ];
+        const uniqueRatings = [...new Set(data.map((p) => Math.floor(p.rating)))];
         setRatings(uniqueRatings.sort());
       })
       .catch((error) => {
@@ -66,17 +68,22 @@ const ProductListing = () => {
     }
 
     if (selectedRating) {
-      updated = updated.filter(
-        (p) => Math.floor(p.rating) >= Number(selectedRating)
-      );
+      updated = updated.filter((p) => Math.floor(p.rating) >= Number(selectedRating));
     }
 
     setFeaturedProducts(updated);
+    setCurrentPage(1); // Reset to first page after filter
   }, [products, searchTerm, priceRange, selectedCategory, selectedRating]);
 
   useEffect(() => {
     filterProducts();
   }, [filterProducts]);
+
+  // Pagination logic
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = featuredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+  const totalPages = Math.ceil(featuredProducts.length / productsPerPage);
 
   return (
     <div>
@@ -117,7 +124,7 @@ const ProductListing = () => {
               max="100"
               value={priceRange[1]}
               onChange={(e) => setPriceRange([0, +e.target.value])}
-              className="w-full "
+              className="w-full"
             />
             <p className="text-sm mt-1 dark:text-black">
               ${priceRange[0]} - ${priceRange[1]}
@@ -145,52 +152,66 @@ const ProductListing = () => {
         <main className="w-full p-6">
           {loading ? (
             <Spinner />
-          ) : featuredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {featuredProducts.map((product) => (
-                <div
-                  key={product._id}
-                  className="bg-white rounded-lg shadow-sm p-3 flex flex-col justify-between hover:shadow-lg transition"
-                >
-                  {/* Product Image with Hover Zoom */}
-                  <div className="relative group">
-                    <div className="h-56 w-full rounded-md overflow-hidden bg-gray-100 relative">
-                      <Image
-                        src={product.image}
-                        alt={product.name}
-                        fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </div>
-                  </div>
-
-                  {/* Product Info */}
-                  <div className="px-2 pt-2">
-                    <p
-                      className="text-sm font-medium truncate dark:text-black"
-                      title={product.name}
-                    >
-                      {product.name}
-                    </p>
-                    <p className="text-sm text-gray-500">{product.category}</p>
-                    <div className="flex items-center justify-between mt-1">
-                      <span className="text-sm font-bold dark:text-black">${product.price}</span>
-                      <div className="text-yellow-500 text-sm">
-                        {product.rating} {'★'.repeat(Math.floor(product.rating))}
+          ) : currentProducts.length > 0 ? (
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {currentProducts.map((product) => (
+                  <div
+                    key={product._id}
+                    className="bg-white rounded-lg shadow-sm p-3 flex flex-col justify-between hover:shadow-lg transition"
+                  >
+                    <div className="relative group">
+                      <div className="h-56 w-full rounded-md overflow-hidden bg-gray-100 relative">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                       </div>
                     </div>
-                    <div className="flex justify-end mt-2">
-                      <Link href={`/products/${product._id}`}>
-                        <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
-                          Detail &rarr;
-                        </button>
-                      </Link>
+
+                    <div className="px-2 pt-2">
+                      <p className="text-sm font-medium truncate dark:text-black" title={product.name}>
+                        {product.name}
+                      </p>
+                      <p className="text-sm text-gray-500">{product.category}</p>
+                      <div className="flex items-center justify-between mt-1">
+                        <span className="text-sm font-bold dark:text-black">${product.price}</span>
+                        <div className="text-yellow-500 text-sm">
+                          {product.rating} {'★'.repeat(Math.floor(product.rating))}
+                        </div>
+                      </div>
+                      <div className="flex justify-end mt-2">
+                        <Link href={`/products/${product._id}`}>
+                          <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
+                            Detail &rarr;
+                          </button>
+                        </Link>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+
+              {/* Pagination */}
+              <div className="flex justify-center mt-6 space-x-2">
+                {Array.from({ length: totalPages }, (_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentPage(i + 1)}
+                    className={`px-4 py-2 rounded-md border ${
+                      currentPage === i + 1
+                        ? 'bg-black text-white'
+                        : 'bg-white text-black hover:bg-gray-200'
+                    }`}
+                  >
+                    {i + 1}
+                  </button>
+                ))}
+              </div>
+            </>
           ) : (
             <p className="text-gray-500 text-center">No products match your filters.</p>
           )}
