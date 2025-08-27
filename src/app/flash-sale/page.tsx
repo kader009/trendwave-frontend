@@ -28,7 +28,7 @@ const FlashSalePage = async () => {
           {/* Title */}
           <div className="flex items-center justify-between mb-4">
             <div>
-              <h1 className="text-xl md:text-2xl font-bold">Flash Sale Products</h1>
+              <h1 className="text-3xl font-bold">Flash Sale Products</h1>
               <p className="text-sm text-gray-600 mb-4 dark:text-white">
                 Grab your favorite products at unbeatable prices! Limited time
                 offers, hurry up!

@@ -26,7 +26,7 @@ const Footer = () => {
           </div>
           {/* Newsletter */}
           <div>
-            <h2 className="text-lg font-semibold mb-3">Stay in the Loop!</h2>
+            <h2 className="text-lg font-semibold mb-3">Stay in the Loop</h2>
             <p className="text-sm text-white mb-3">
               Get exclusive deals, style tips, and the latest news delivered to
               your inbox.
