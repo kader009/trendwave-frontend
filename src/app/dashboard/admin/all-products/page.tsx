@@ -11,18 +11,7 @@ import { useAppSelector } from '@/redux/hooks';
 import { RootState } from '@/redux/store';
 import { toast } from 'sonner';
 import Spinner from '@/components/Sppiner';
-
-type Product = {
-  _id: string;
-  name: string;
-  description: string;
-  category: string;
-  price: number;
-  rating: number;
-  image: string;
-  stock: number;
-  totalSales: number;
-};
+import { Product } from '@/types/Productstype';
 
 const AllProducts = () => {
   const { user } = useAppSelector((state: RootState) => state.user);
