@@ -131,7 +131,7 @@ const Navbar = () => {
         }`}
       >
         <div className="p-4 border-b flex justify-between items-center">
-          <span className="text-xl font-bold text-slate-800">TrendWave</span>
+          <span className="text-xl font-bold text-slate-800"><Link href={`/`}>TrendWave</Link></span>
           <button onClick={handleDrawerToggle} aria-label="Close menu">
             ✕
           </button>

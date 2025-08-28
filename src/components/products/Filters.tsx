@@ -1,21 +1,16 @@
-type Props = {
-  search: string;
-  setSearch: (v: string) => void;
-  category: string;
-  setCategory: (v: string) => void;
-  categories: string[];
-  rating: string;
-  setRating: (v: string) => void;
-  ratings: number[];
-  price: number[];
-  setPrice: (v: number[]) => void;
-};
+import { Props } from '@/types/Filtertype';
 
 export default function Filters({
-  search, setSearch,
-  category, setCategory, categories,
-  rating, setRating, ratings,
-  price, setPrice
+  search,
+  setSearch,
+  category,
+  setCategory,
+  categories,
+  rating,
+  setRating,
+  ratings,
+  price,
+  setPrice,
 }: Props) {
   return (
     <>
@@ -37,7 +32,9 @@ export default function Filters({
           className="w-full p-2 border rounded-md dark:text-black"
         >
           <option value="">All</option>
-          {categories.map((cat) => <option key={cat}>{cat}</option>)}
+          {categories.map((cat) => (
+            <option key={cat}>{cat}</option>
+          ))}
         </select>
       </div>
 
@@ -51,7 +48,9 @@ export default function Filters({
           onChange={(e) => setPrice([0, +e.target.value])}
           className="w-full"
         />
-        <p className="text-sm mt-1 dark:text-black">${price[0]} - ${price[1]}</p>
+        <p className="text-sm mt-1 dark:text-black">
+          ${price[0]} - ${price[1]}
+        </p>
       </div>
 
       <div className="mb-6">
@@ -62,7 +61,11 @@ export default function Filters({
           className="w-full p-2 border rounded-md dark:text-black"
         >
           <option value="">All</option>
-          {ratings.map((r) => <option key={r} value={r}>{r}+ stars</option>)}
+          {ratings.map((r) => (
+            <option key={r} value={r}>
+              {r}+ stars
+            </option>
+          ))}
         </select>
       </div>
     </>
