@@ -106,7 +106,7 @@ const AllProducts = () => {
           {visibleData?.map((product: Product, index: number) => (
             <tr key={product._id} className="hover:bg-gray-50">
               <td className="px-4 py-3 dark:text-black">{index + 1}</td>
-              <td className="px-4 py-3 font-medium text-gray-800">
+              <td className="px-4 py-3 font-medium text-gray-800 whitespace-nowrap">
                 {product.name}
               </td>
               <td className="px-4 py-3 font-medium dark:text-black">
@@ -125,7 +125,7 @@ const AllProducts = () => {
                 />
               </td>
               <td className="px-4 py-3">
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-nowrap gap-2">
                   <button
                     onClick={() => handleUpdate(product)}
                     className="bg-black hover:bg-gray-700 text-white px-3 py-1 rounded text-sm cursor-pointer"
