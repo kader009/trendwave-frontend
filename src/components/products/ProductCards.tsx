@@ -1,14 +1,6 @@
-import Image from "next/image";
-import Link from "next/link";
-
-type Product = {
-  _id: string;
-  name: string;
-  category: string;
-  price: number;
-  rating: number;
-  image: string;
-};
+import { Product } from '@/types/Productstype';
+import Image from 'next/image';
+import Link from 'next/link';
 
 export default function ProductCard({ product }: { product: Product }) {
   return (
@@ -26,14 +18,19 @@ export default function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="px-2 pt-2">
-        <p className="text-sm font-medium truncate dark:text-black" title={product.name}>
+        <p
+          className="text-sm font-medium truncate dark:text-black"
+          title={product.name}
+        >
           {product.name}
         </p>
         <p className="text-sm text-gray-500">{product.category}</p>
         <div className="flex items-center justify-between mt-1">
-          <span className="text-sm font-bold dark:text-black">${product.price}</span>
+          <span className="text-sm font-bold dark:text-black">
+            ${product.price}
+          </span>
           <div className="text-yellow-500 text-sm">
-            {product.rating} {"★".repeat(Math.floor(product.rating))}
+            {product.rating} {'★'.repeat(Math.floor(product.rating))}
           </div>
         </div>
         <div className="flex justify-end mt-2">
