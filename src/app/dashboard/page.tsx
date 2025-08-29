@@ -65,9 +65,9 @@ export default function DashboardHome() {
       <div className="bg-white rounded-lg shadow p-6 mb-8">
         <h2 className="text-xl font-semibold text-gray-700 mb-4">Quick Actions</h2>
         <div className="flex flex-wrap gap-4">
-          <button className="px-4 py-2 bg-black text-white rounded hover:bg-indigo-700">➕ Add Product</button>
-          <button className="px-4 py-2 bg-black text-white rounded hover:bg-green-700">👥 New Customer</button>
-          <button className="px-4 py-2 bg-black text-white rounded hover:bg-gray-700">📊 View Reports</button>
+          <button className="px-4 py-2 bg-black text-white rounded cursor-pointer hover:bg-indigo-700">➕ Add Product</button>
+          <button className="px-4 py-2 bg-black text-white rounded cursor-pointer hover:bg-green-700">👥 New Customer</button>
+          <button className="px-4 py-2 bg-black text-white rounded cursor-pointer hover:bg-gray-700">📊 View Reports</button>
         </div>
       </div>
     </div>

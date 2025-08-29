@@ -35,7 +35,7 @@ export default function ProductCard({ product }: { product: Product }) {
         </div>
         <div className="flex justify-end mt-2">
           <Link href={`/products/${product._id}`}>
-            <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition">
+            <button className="bg-black text-white rounded-full px-4 py-2 text-sm hover:bg-gray-800 transition cursor-pointer">
               Detail →
             </button>
           </Link>

@@ -61,7 +61,7 @@ const AboutPage = () => {
         <h2 className="text-2xl font-semibold mb-4">Ready to explore TrendWave?</h2>
         <p className="text-gray-600 mb-6 dark:text-white">Join our community of sellers and shoppers today!</p>
         <Link href="/products">
-          <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition dark:bg-gray-600">
+          <button className="bg-black text-white px-6 py-2 rounded-full hover:bg-gray-800 transition dark:bg-gray-600 cursor-pointer">
             Start Shopping
           </button>
         </Link>
