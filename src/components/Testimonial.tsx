@@ -40,8 +40,7 @@ export default function Testimonial() {
   const [index, setIndex] = useState(0);
   const total = testimonials.length;
 
-  const next = useCallback(() => setIndex((index + 1) % total), [total, index]);
-  const prev = useCallback(() => setIndex((index - 1 + total) % total), [total, index]);
+  const next = useCallback(() => setIndex((prev) => (prev + 1) % total), [total]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -53,17 +52,11 @@ export default function Testimonial() {
   return (
     <section className="bg-white dark:bg-black py-10 px-4">
       <div className="max-w-[88rem] mx-auto text-center relative">
-        <h1 className="text-3xl font-bold mb-10 dark:text-white">Customer Testimonials</h1>
+        <h1 className="text-3xl font-bold mb-10 dark:text-white">
+          Customer Testimonials
+        </h1>
 
         <div className="relative bg-white dark:bg-black p-8 rounded shadow-md min-h-[320px]">
-          {/* Left Arrow */}
-          <button
-            onClick={prev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-2xl px-3 py-1 rounded-full shadow hover:bg-gray-200 dark:hover:bg-gray-600 transition"
-          >
-            &lt;
-          </button>
-
           {/* Testimonial Content */}
           <Image
             src={testimonials[index].image}
@@ -78,14 +71,21 @@ export default function Testimonial() {
           <p className="font-semibold text-gray-900 dark:text-white">
             — {testimonials[index].name}
           </p>
+        </div>
 
-          {/* Right Arrow */}
-          <button
-            onClick={next}
-            className="absolute right-0 top-1/2 -translate-y-1/2 bg-white dark:bg-gray-700 text-2xl px-3 py-1 rounded-full shadow hover:bg-gray-200 dark:hover:bg-gray-600 transition"
-          >
-            &gt;
-          </button>
+        {/* Pagination Dots */}
+        <div className="flex justify-center mt-6 space-x-2">
+          {testimonials.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setIndex(i)}
+              className={`w-3 h-3 rounded-full transition ${
+                i === index
+                  ? 'bg-gray-800 dark:bg-white scale-125'
+                  : 'bg-gray-400 dark:bg-gray-600 hover:scale-110'
+              }`}
+            />
+          ))}
         </div>
       </div>
     </section>
