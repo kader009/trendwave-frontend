@@ -7,7 +7,7 @@ export default function Header() {
       aria-label="Main promotional banner"
     >
       <div className="text-center max-w-3xl">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-extrabold leading-tight mb-6">
+        <h1 className="text-5xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold leading-tight mb-6">
           Discover Style <br /> That Speaks for You
         </h1>
         <p className="text-base sm:text-lg md:text-xl mb-6 text-white/90">

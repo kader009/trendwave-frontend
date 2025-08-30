@@ -86,7 +86,7 @@ export default function ProductListing({ products }: { products: Product[] }) {
                 <button
                   key={i}
                   onClick={() => setCurrentPage(i + 1)}
-                  className={`px-4 py-2 rounded-md border cursor-pointer ${
+                  className={`px-4 py-2 rounded-md border dark:border-black cursor-pointer ${
                     currentPage === i + 1
                       ? 'bg-black text-white'
                       : 'bg-white text-black hover:bg-gray-200'
