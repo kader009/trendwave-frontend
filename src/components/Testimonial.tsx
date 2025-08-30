@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 
 const testimonials = [
   {
@@ -40,8 +40,15 @@ export default function Testimonial() {
   const [index, setIndex] = useState(0);
   const total = testimonials.length;
 
-  const next = () => setIndex((index + 1) % total);
-  const prev = () => setIndex((index - 1 + total) % total);
+  const next = useCallback(() => setIndex((index + 1) % total), [total, index]);
+  const prev = useCallback(() => setIndex((index - 1 + total) % total), [total, index]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      next();
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [next]);
 
   return (
     <section className="bg-white dark:bg-black py-10 px-4">
