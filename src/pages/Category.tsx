@@ -95,7 +95,7 @@ const Category = async () => {
         {/* View All Button */}
         <div className="mt-10 text-center">
           <Link href={'/products'}>
-            <button className="inline-flex items-center gap-2 px-4 py-1 bg-black text-white rounded-full hover:bg-gray-800 transition cursor-pointer dark:bg-gray-600">
+            <button className="inline-flex items-center gap-2 px-4 py-1 bg-black text-white rounded-full hover:bg-gray-800 transition cursor-pointer dark:bg-white dark:hover:bg-gray-200 dark:text-black">
               View All <span className="text-xl">&rarr;</span>
             </button>
           </Link>
