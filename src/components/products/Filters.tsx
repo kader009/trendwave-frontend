@@ -14,22 +14,22 @@ export default function Filters({
 }: Props) {
   return (
     <>
-      <h1 className="text-2xl font-bold mb-4 dark:text-black">Filters</h1>
+      <h1 className="text-2xl font-bold mb-4 dark:text-white">Filters</h1>
 
       <input
         type="text"
         value={search}
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search products..."
-        className="w-full p-2 border rounded-md mb-6 dark:text-black"
+        className="w-full p-2 border rounded-md mb-6 dark:text-white placeholder:dark:text-white"
       />
 
       <div className="mb-6">
-        <h3 className="font-semibold mb-2 dark:text-black">Category</h3>
+        <h3 className="font-semibold mb-2 dark:text-white">Category</h3>
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
-          className="w-full p-2 border rounded-md dark:text-black"
+          className="w-full p-2 border rounded-md dark:text-white dark:placeholder-black"
         >
           <option value="">All</option>
           {categories.map((cat) => (
@@ -39,7 +39,7 @@ export default function Filters({
       </div>
 
       <div className="mb-6">
-        <h2 className="font-semibold mb-2 dark:text-black">Price</h2>
+        <h2 className="font-semibold mb-2 dark:text-white">Price</h2>
         <input
           type="range"
           min="0"
@@ -48,17 +48,21 @@ export default function Filters({
           onChange={(e) => setPrice([0, +e.target.value])}
           className="w-full"
         />
-        <p className="text-sm mt-1 dark:text-black">
+        <p className="text-sm mt-1 dark:text-white">
           ${price[0]} - ${price[1]}
         </p>
       </div>
 
       <div className="mb-6">
-        <h3 className="font-semibold mb-2 dark:text-black">Rating</h3>
+        <h3 className="font-semibold mb-2 text-gray-800 dark:text-gray-200">
+          Rating
+        </h3>
         <select
           value={rating}
           onChange={(e) => setRating(e.target.value)}
-          className="w-full p-2 border rounded-md dark:text-black"
+          className="w-full p-2 rounded-md border border-gray-300 bg-white text-gray-800 
+               dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 
+               focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All</option>
           {ratings.map((r) => (

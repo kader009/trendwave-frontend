@@ -41,7 +41,7 @@ const AllUser = () => {
 
   return (
     <div className="max-w-[84rem] mx-auto px-4 py-6">
-      <h1 className="text-2xl font-bold mb-6 text-black">All Users</h1>
+      <h1 className="text-2xl font-bold mb-6 text-black dark:text-white">All Users</h1>
 
       <div className="overflow-x-auto bg-white rounded-lg shadow-md">
         <table className="min-w-[700px] w-full text-sm text-left border border-gray-200">

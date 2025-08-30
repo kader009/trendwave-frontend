@@ -44,7 +44,7 @@ export default function Testimonial() {
   const prev = () => setIndex((index - 1 + total) % total);
 
   return (
-    <section className="bg-white dark:bg-gray-900 py-10 px-4">
+    <section className="bg-white dark:bg-black py-10 px-4">
       <div className="max-w-[88rem] mx-auto text-center relative">
         <h1 className="text-3xl font-bold mb-10 dark:text-white">Customer Testimonials</h1>
 

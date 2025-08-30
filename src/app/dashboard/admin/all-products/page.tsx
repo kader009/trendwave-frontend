@@ -159,7 +159,7 @@ const AllProducts = () => {
       {/* Update Modal */}
       {showModal && selectedProduct && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
-          <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-md">
+          <div className="bg-white p-6 rounded-lg shadow-xl w-full max-w-md dark:bg-black">
             <h2 className="text-lg font-bold mb-4">Update Product</h2>
             <div className="flex flex-col gap-4">
               <input
@@ -192,13 +192,13 @@ const AllProducts = () => {
               <div className="flex justify-end gap-2">
                 <button
                   onClick={() => setShowModal(false)}
-                  className="px-4 py-2 bg-gray-400 rounded text-white"
+                  className="px-4 py-2 bg-gray-400 rounded text-white dark:text-black"
                 >
                   Cancel
                 </button>
                 <button
                   onClick={handleModalSubmit}
-                  className="px-4 py-2 bg-black text-white rounded"
+                  className="px-4 py-2 bg-black text-white rounded dark:bg-white dark:text-black"
                 >
                   Save
                 </button>

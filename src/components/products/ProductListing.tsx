@@ -54,7 +54,7 @@ export default function ProductListing({ products }: { products: Product[] }) {
 
   return (
     <div className="flex flex-col lg:flex-row">
-      <aside className="w-full lg:w-1/4 bg-white shadow-md p-6 lg:sticky lg:top-0 lg:h-screen">
+      <aside className="w-full lg:w-1/4 bg-white shadow-md p-6 lg:sticky lg:top-0 lg:h-screen dark:bg-black">
         <Filters
           search={search}
           setSearch={setSearch}
