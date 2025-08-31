@@ -14,7 +14,7 @@ const poppins = Poppins({
 
 export const metadata: Metadata = {
   title: 'TrendWave',
-  description: 'TrendWave Ecommerce App',
+  description: 'TrendWave Mini Ecommerce App',
   icons:{
     icon:'/icons8-shopping-bag-96.png'
   }
