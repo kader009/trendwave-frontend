@@ -12,7 +12,7 @@ export default function Header() {
         </h1>
         <p className="text-base sm:text-lg md:text-xl mb-6 text-white/90">
           Explore the latest trends in fashion, electronics, and lifestyle with
-          fast delivery & quality support.
+          good & valuable products.
         </p>
         <Link
           href="/products"
