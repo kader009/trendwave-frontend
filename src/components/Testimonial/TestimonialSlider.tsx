@@ -14,30 +14,33 @@ export default function TestimonialSlider() {
   );
 
   useEffect(() => {
-    const interval = setInterval(next, 4000);
+    const interval = setInterval(next, 5000);
     return () => clearInterval(interval);
   }, [next]);
 
   const current = testimonials[index];
 
   return (
-    <div className="relative bg-white dark:bg-black p-8 rounded shadow-md min-h-[320px]">
-      <Image
-        src={current.image}
-        alt={current.name}
-        width={80}
-        height={80}
-        className="mx-auto rounded-full mb-4"
-      />
-      <p className="italic mb-4 text-gray-700 dark:text-gray-300">
-        “{current.text}”
-      </p>
-      <p className="font-semibold text-gray-900 dark:text-white">
-        — {current.name}
-      </p>
+    <div className="relative bg-white dark:bg-black p-8 rounded shadow-md min-h-[320px] flex flex-col md:flex-row items-center md:items-start gap-6">
+      {/* Testimonial Content */}
+      <div className="flex-1 text-center md:text-left">
+        <Image
+          src={current.image}
+          alt={current.name}
+          width={80}
+          height={80}
+          className="mx-auto md:mx-0 rounded-full mb-4"
+        />
+        <p className="italic mb-4 text-gray-700 dark:text-gray-300">
+          “{current.text}”
+        </p>
+        <p className="font-semibold text-gray-900 dark:text-white">
+          — {current.name}
+        </p>
+      </div>
 
-      {/* Pagination Dots */}
-      <div className="flex justify-center mt-6 space-x-2">
+      {/* Vertical Pagination Dots */}
+      <div className="flex md:flex-col gap-3 justify-center md:justify-start items-center">
         {testimonials.map((_, i) => (
           <button
             key={i}
