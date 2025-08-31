@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import Image from 'next/image';
-import { testimonials } from './testimonials';
+import { testimonials } from '../../types/testimonials';
 
 export default function TestimonialSlider() {
   const [index, setIndex] = useState(0);
