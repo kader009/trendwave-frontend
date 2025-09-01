@@ -1,16 +1,16 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+// import { Poppins } from 'next/font/google';
 import './globals.css';
 import Providers from '@/Provider/ReduxProvider';
 import Navbar from '@/shared/Navbar';
 import Footer from '@/shared/Footer';
 import PersistProvider from '@/Provider/PersistProvider';
 
-const poppins = Poppins({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '800', '900'],
-  display: 'swap'
-});
+// const poppins = Poppins({
+//   subsets: ['latin'],
+//   weight: ['400', '500', '600', '700', '800', '900'],
+//   display: 'swap'
+// });
 
 export const metadata: Metadata = {
   title: 'TrendWave',
@@ -27,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} font-sans antialiased`}>
+      <body className={`font-sans antialiased`}>
         <Providers>
           <PersistProvider>
           <Navbar/>
