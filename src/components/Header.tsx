@@ -2,6 +2,7 @@ import Link from 'next/link';
 
 export default function Header() {
   return (
+    // bg color change from the previous bg color
     <header
       className="relative w-full h-screen bg-[#6b46c1] text-white overflow-hidden flex items-center justify-center px-4 sm:px-6 md:px-8"
       aria-label="Main promotional banner"
