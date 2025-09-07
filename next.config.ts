@@ -13,6 +13,11 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  compiler: {
+    reactRemoveProperties: true,
+  },
+  swcMinify: true,
 };
 
 export default nextConfig;
