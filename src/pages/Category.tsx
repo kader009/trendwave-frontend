@@ -35,6 +35,7 @@ const Category = async () => {
               src={categories[0]?.image}
               alt={categories[0]?.name}
               fill
+              loading='lazy'
               className="object-cover group-hover:scale-105 transition duration-500"
             />
             <div className="absolute inset-0 bg-black/40 flex items-end p-4">
@@ -51,6 +52,7 @@ const Category = async () => {
                 src={categories[1]?.image}
                 alt={categories[1]?.name}
                 fill
+                loading='lazy'
                 className="object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-black/40 flex items-end p-4">
@@ -66,6 +68,7 @@ const Category = async () => {
                 src={categories[2]?.image}
                 alt={categories[2]?.name}
                 fill
+                loading='lazy'
                 className="object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-black/40 flex items-end p-4">
@@ -82,6 +85,7 @@ const Category = async () => {
               src={categories[3]?.image}
               alt={categories[3]?.name}
               fill
+              loading='lazy'
               className="object-cover group-hover:scale-105 transition duration-500"
             />
             <div className="absolute inset-0 bg-black/40 flex items-end p-4">

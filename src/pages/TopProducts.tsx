@@ -56,6 +56,7 @@ const TopProducts = async () => {
                       src={product?.image}
                       alt={product.name}
                       fill
+                      loading='lazy'
                       className="object-cover transition-transform duration-300 group-hover:scale-110"
                       sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 25vw"
                     />
