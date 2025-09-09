@@ -10,8 +10,11 @@ interface Category {
 
 const Category = async () => {
   const response = await fetch(
-    `https://trendwave-backend.onrender.com/api/v1/category`);
-    
+    `https://trendwave-backend.onrender.com/api/v1/category`,
+    {
+      next: { revalidate: 3600 },
+    }
+  );
   const data = await response.json();
   const categories: Category[] = data?.Category || [];
 
@@ -27,7 +30,6 @@ const Category = async () => {
           </p>
         </div>
 
-        {/* Flexbox Layout */}
         <div className="mt-10 flex flex-col lg:flex-row gap-4 items-stretch">
           {/* Left Large Image */}
           <div className="relative h-[300px] lg:h-[520px] flex-1 rounded-xl overflow-hidden group">
@@ -35,7 +37,11 @@ const Category = async () => {
               src={categories[0]?.image}
               alt={categories[0]?.name || 'Category'}
               fill
-              loading="lazy"
+              priority
+              loading="eager"
+              quality={85}
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0iI2YwZmZmZiIvPjwvc3ZnPg=="
               sizes="(max-width: 768px) 100vw, 
                     (max-width: 1200px) 50vw, 
                     33vw"
@@ -56,6 +62,7 @@ const Category = async () => {
                 alt={categories[1]?.name || 'Category'}
                 fill
                 loading="lazy"
+                quality={85}
                 sizes="(max-width: 768px) 100vw, 
                       (max-width: 1200px) 50vw, 
                       33vw"
@@ -75,6 +82,7 @@ const Category = async () => {
                 alt={categories[2]?.name || 'Category'}
                 fill
                 loading="lazy"
+                quality={85}
                 sizes="(max-width: 768px) 100vw, 
                       (max-width: 1200px) 50vw, 
                       33vw"
@@ -95,6 +103,7 @@ const Category = async () => {
               alt={categories[3]?.name || 'Category'}
               fill
               loading="lazy"
+              quality={85}
               sizes="(max-width: 768px) 100vw, 
                     (max-width: 1200px) 50vw, 
                     33vw"
@@ -108,7 +117,6 @@ const Category = async () => {
           </div>
         </div>
 
-        {/* View All Button */}
         <div className="mt-10 text-center">
           <Link href={'/products'}>
             <button className="inline-flex items-center gap-2 px-4 py-1 bg-black text-white rounded-full hover:bg-gray-800 transition cursor-pointer dark:bg-white dark:hover:bg-gray-200 dark:text-black">
