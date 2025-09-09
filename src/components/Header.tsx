@@ -19,7 +19,7 @@ export default function Header() {
           href="/products"
           className="px-6 py-2 text-xl rounded-full border border-white text-white bg-transparent hover:bg-white hover:text-black transition-colors duration-300"
         >
-          Shop Now
+          <button>Shop Now</button>
         </Link>
       </div>
     </header>
