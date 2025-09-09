@@ -9,9 +9,12 @@ interface Category {
 }
 
 const Category = async () => {
-  const response = await fetch(`https://trendwave-backend.onrender.com/api/v1/category`, {
-    cache: 'no-store',
-  });
+  const response = await fetch(
+    `https://trendwave-backend.onrender.com/api/v1/category`,
+    {
+      cache: 'no-store',
+    }
+  );
   const data = await response.json();
   const categories: Category[] = data?.Category || [];
 
@@ -33,9 +36,12 @@ const Category = async () => {
           <div className="relative h-[300px] lg:h-[520px] flex-1 rounded-xl overflow-hidden group">
             <Image
               src={categories[0]?.image}
-              alt={categories[0]?.name}
+              alt={categories[0]?.name || 'Category'}
               fill
-              loading='lazy'
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 
+                    (max-width: 1200px) 50vw, 
+                    33vw"
               className="object-cover group-hover:scale-105 transition duration-500"
             />
             <div className="absolute inset-0 bg-black/40 flex items-end p-4">
@@ -50,9 +56,12 @@ const Category = async () => {
             <div className="relative h-[240px] lg:h-[255px] rounded-xl overflow-hidden group">
               <Image
                 src={categories[1]?.image}
-                alt={categories[1]?.name}
+                alt={categories[1]?.name || 'Category'}
                 fill
-                loading='lazy'
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 
+                      (max-width: 1200px) 50vw, 
+                      33vw"
                 className="object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-black/40 flex items-end p-4">
@@ -66,9 +75,12 @@ const Category = async () => {
             <div className="relative h-[240px] lg:h-[255px] rounded-xl overflow-hidden group">
               <Image
                 src={categories[2]?.image}
-                alt={categories[2]?.name}
+                alt={categories[2]?.name || 'Category'}
                 fill
-                loading='lazy'
+                loading="lazy"
+                sizes="(max-width: 768px) 100vw, 
+                      (max-width: 1200px) 50vw, 
+                      33vw"
                 className="object-cover group-hover:scale-105 transition duration-500"
               />
               <div className="absolute inset-0 bg-black/40 flex items-end p-4">
@@ -83,9 +95,12 @@ const Category = async () => {
           <div className="relative h-[300px] lg:h-[520px] flex-1 rounded-xl overflow-hidden group">
             <Image
               src={categories[3]?.image}
-              alt={categories[3]?.name}
+              alt={categories[3]?.name || 'Category'}
               fill
-              loading='lazy'
+              loading="lazy"
+              sizes="(max-width: 768px) 100vw, 
+                    (max-width: 1200px) 50vw, 
+                    33vw"
               className="object-cover group-hover:scale-105 transition duration-500"
             />
             <div className="absolute inset-0 bg-black/40 flex items-end p-4">
