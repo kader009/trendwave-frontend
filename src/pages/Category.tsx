@@ -10,11 +10,8 @@ interface Category {
 
 const Category = async () => {
   const response = await fetch(
-    `https://trendwave-backend.onrender.com/api/v1/category`,
-    {
-      cache: 'no-store',
-    }
-  );
+    `https://trendwave-backend.onrender.com/api/v1/category`);
+    
   const data = await response.json();
   const categories: Category[] = data?.Category || [];
 
