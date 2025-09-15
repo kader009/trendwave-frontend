@@ -1,12 +1,7 @@
 import Container from '@/components/ui/Container';
+import { Category as CategoryType } from '@/types/Categorytype';
 import Image from 'next/image';
 import Link from 'next/link';
-
-interface Category {
-  name: string;
-  image: string;
-  description: string;
-}
 
 const Category = async () => {
   const response = await fetch(
@@ -16,7 +11,7 @@ const Category = async () => {
     }
   );
   const data = await response.json();
-  const categories: Category[] = data?.Category || [];
+  const categories: CategoryType[] = data?.Category || [];
 
   return (
     <div className="mt-20 mx-6">
