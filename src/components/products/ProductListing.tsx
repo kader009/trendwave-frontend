@@ -43,8 +43,12 @@ export default function ProductListing({ products }: { products: Product[] }) {
 
   useEffect(() => {
     setLoading(true);
-    filterProducts();
-    setLoading(false);
+    const timer = setTimeout(() => {
+      filterProducts();
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
   }, [filterProducts]);
 
   const last = currentPage * perPage;
