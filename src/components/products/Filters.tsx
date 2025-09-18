@@ -22,8 +22,8 @@ export default function Filters({
         onChange={(e) => setSearch(e.target.value)}
         placeholder="Search products..."
         className="w-full p-2 rounded-md border border-gray-300 bg-white text-gray-800 
-               dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 
-               focus:outline-none focus:ring-2 focus:ring-blue-500"
+              dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 
+              focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
       <div className="mb-6">
@@ -32,8 +32,8 @@ export default function Filters({
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           className="w-full p-2 rounded-md border border-gray-300 bg-white text-gray-800 
-               dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 
-               focus:outline-none focus:ring-2 focus:ring-blue-500"
+              dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 
+              focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All</option>
           {categories.map((cat) => (
@@ -65,8 +65,8 @@ export default function Filters({
           value={rating}
           onChange={(e) => setRating(e.target.value)}
           className="w-full p-2 rounded-md border border-gray-300 bg-white text-gray-800 
-               dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 
-               focus:outline-none focus:ring-2 focus:ring-blue-500"
+              dark:border-gray-600 dark:bg-gray-800 dark:text-gray-200 
+              focus:outline-none focus:ring-2 focus:ring-blue-500"
         >
           <option value="">All</option>
           {ratings.map((r) => (
