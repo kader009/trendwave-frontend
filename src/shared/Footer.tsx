@@ -3,7 +3,8 @@ import Link from 'next/link';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1E293B] text-white pt-16 pb-8 relative overflow-hidden">
+    <footer className="bg-gradient-to-b from-[#0f172a] to-[#1E293B] text-white pt-16 pb-8 relative overflow-hidden">
+      <div className="absolute inset-0 bg-white/5 backdrop-blur-md"></div>
       <Container>
         <div className="max-w-[86rem] mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 relative z-10">
           {/* Logo & About */}
