@@ -8,6 +8,8 @@ import {
   WatchIcon,
   Phone,
   BookAIcon,
+  Plus as AddProduct,
+  BarChart,
 } from 'lucide-react';
 
 export default function DashboardHome() {
@@ -104,14 +106,14 @@ export default function DashboardHome() {
           Quick Actions
         </h2>
         <div className="flex flex-wrap gap-4">
-          <button className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium hover:opacity-90">
-            ➕ Add Product
+          <button className="px-4 py-4 rounded-lg bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium hover:opacity-90 flex justify-center items-center gap-2">
+            <AddProduct /> Add Product
           </button>
-          <button className="px-4 py-2 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium hover:opacity-90">
-            👥 New Customer
+          <button className="px-4 py-4 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium hover:opacity-90 flex justify-center items-center gap-2">
+            <UserPlus /> New Customer
           </button>
-          <button className="px-4 py-2 rounded-lg bg-gradient-to-r from-gray-600 to-gray-800 text-white font-medium hover:opacity-90">
-            📊 View Reports
+          <button className="px-4 py-4 rounded-lg bg-gradient-to-r from-gray-600 to-gray-800 text-white font-medium hover:opacity-90 flex justify-center items-center gap-2">
+            <BarChart /> View Reports
           </button>
         </div>
       </div>
