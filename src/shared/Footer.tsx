@@ -10,7 +10,9 @@ const Footer = () => {
           {/* Logo & About */}
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="text-2xl font-bold">TrendWave</h1>
+              <h1 className="text-2xl font-bold">
+                <Link href="/">TrendWave</Link>
+              </h1>
             </div>
             <p className="mt-4 text-white text-sm leading-relaxed">
               Discover trends, shop smart. TrendWave brings top brands & vendors
@@ -168,7 +170,7 @@ const Footer = () => {
         <div className="mt-10 border-t border-gray-700 pt-6 relative z-10">
           {' '}
           {/* Added relative z-10 */}
-          <div className="max-w-7xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between text-sm text-white">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between text-sm text-white">
             <p>© {new Date().getFullYear()} TrendWave. All rights reserved.</p>
             <div className="flex items-center gap-4 mt-4 md:mt-0 ">
               <Link
