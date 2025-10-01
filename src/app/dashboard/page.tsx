@@ -1,3 +1,4 @@
+import AnimatedCounter from '@/components/animation/AnimatedCounter';
 import {
   DollarSign,
   Users,
@@ -110,7 +111,7 @@ export default function DashboardHome() {
             <AddProduct /> Add Product
           </button>
           <button className="px-4 py-4 rounded-lg bg-gradient-to-r from-green-500 to-emerald-600 text-white font-medium hover:opacity-90 flex justify-center items-center gap-2">
-            <UserPlus /> New Customer
+            <UserPlus /> New Clients
           </button>
           <button className="px-4 py-4 rounded-lg bg-gradient-to-r from-gray-600 to-gray-800 text-white font-medium hover:opacity-90 flex justify-center items-center gap-2">
             <BarChart /> View Reports
@@ -128,10 +129,14 @@ function StatCard({
   color,
 }: {
   title: string;
-  value: string;
+  value: string | number;
   icon: React.ReactNode;
   color: string;
 }) {
+  const numericValue =
+    typeof value === 'string' ? parseInt(value.replace(/\D/g, '')) : value;
+  const unit = typeof value === 'string' && value.includes('$') ? '$' : '';
+
   return (
     <div className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition">
       <div
@@ -140,7 +145,10 @@ function StatCard({
         {icon}
       </div>
       <h3 className="text-sm font-medium text-gray-500">{title}</h3>
-      <p className="mt-2 text-2xl font-bold text-gray-900">{value}</p>
+      <p className="mt-2 text-2xl font-bold text-gray-900">
+        {unit}
+        <AnimatedCounter value={numericValue} />
+      </p>
     </div>
   );
 }
