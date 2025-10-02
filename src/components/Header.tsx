@@ -18,7 +18,14 @@ export default function Header() {
           good & valuable products.
         </p>
         <Link href="/products">
-          <motion.button className="px-6 py-2 text-xl rounded-full border border-white/30 text-white bg-white/10 hover:bg-white hover:text-black transition-colors duration-300 backdrop-blur-sm">
+          <motion.button
+            whileTap={{
+              scale: 0.95,
+              transition: { type: 'spring', stiffness: 400, damping: 17 },
+              skewX: -5,
+            }}
+            className="px-6 py-2 text-xl rounded-full border border-white/30 text-white bg-white/10 hover:bg-white hover:text-black transition-colors duration-300 backdrop-blur-sm cursor-pointer"
+          >
             Shop Now
           </motion.button>
         </Link>
