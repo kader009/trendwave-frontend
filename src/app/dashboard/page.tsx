@@ -134,7 +134,7 @@ function StatCard({
   color: string;
 }) {
   const numericValue =
-    typeof value === 'string' ? parseInt(value.replace(/\D/g, '')) : value;
+    typeof value === 'string' ? parseInt(value.replace(/\D/g, '')) : value; 
   const unit = typeof value === 'string' && value.includes('$') ? '$' : '';
 
   return (

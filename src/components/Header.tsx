@@ -1,4 +1,5 @@
-import Link from "next/link";
+import Link from 'next/link';
+import * as motion from 'motion/react-client';
 
 export default function Header() {
   return (
@@ -16,11 +17,10 @@ export default function Header() {
           Explore the latest trends in fashion, electronics, and lifestyle with
           good & valuable products.
         </p>
-        <Link
-          href="/products"
-          className="px-6 py-2 text-xl rounded-full border border-white/30 text-white bg-white/10 hover:bg-white hover:text-black transition-colors duration-300 backdrop-blur-sm "
-        >
-          Shop Now
+        <Link href="/products">
+          <motion.button className="px-6 py-2 text-xl rounded-full border border-white/30 text-white bg-white/10 hover:bg-white hover:text-black transition-colors duration-300 backdrop-blur-sm">
+            Shop Now
+          </motion.button>
         </Link>
       </div>
     </header>
